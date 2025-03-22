@@ -18,7 +18,7 @@ export const TestData = [
         "Download": true
     },
     {
-        "InvoiceNr": "2",
+        "InvoiceNr": "3",
         "Name": "test2",
         "Price": 25.16,
         "Date": "30/08/2002",
@@ -27,7 +27,7 @@ export const TestData = [
         "Download": true
     },
     {
-        "InvoiceNr": "2",
+        "InvoiceNr": "4",
         "Name": "test2",
         "Price": 25.16,
         "Date": "30/08/2002",
@@ -36,7 +36,7 @@ export const TestData = [
         "Download": true
     },
     {
-        "InvoiceNr": "2",
+        "InvoiceNr": "5",
         "Name": "test2",
         "Price": 25.16,
         "Date": "30/08/2002",
@@ -45,7 +45,7 @@ export const TestData = [
         "Download": true
     },
     {
-        "InvoiceNr": "2",
+        "InvoiceNr": "6",
         "Name": "test2",
         "Price": 25.16,
         "Date": "30/08/2002",
@@ -54,7 +54,34 @@ export const TestData = [
         "Download": true
     },
     {
-        "InvoiceNr": "2",
+        "InvoiceNr": "7",
+        "Name": "test2",
+        "Price": 25.16,
+        "Date": "30/08/2002",
+        "Repeat": "1 maand",
+        "Status": "test",
+        "Download": true
+    },
+    {
+        "InvoiceNr": "8",
+        "Name": "test2",
+        "Price": 25.16,
+        "Date": "30/08/2002",
+        "Repeat": "1 maand",
+        "Status": "test",
+        "Download": true
+    },
+    {
+        "InvoiceNr": "9",
+        "Name": "test2",
+        "Price": 25.16,
+        "Date": "30/08/2002",
+        "Repeat": "1 maand",
+        "Status": "test",
+        "Download": true
+    },
+    {
+        "InvoiceNr": "10",
         "Name": "test2",
         "Price": 25.16,
         "Date": "30/08/2002",
