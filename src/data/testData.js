@@ -1,18 +1,65 @@
 export const TestData = [
     {
-        "invoiceNr": "1",
-        "name": "test1",
-        "price": 10,
-        "date": "29/08/2002",
-        "status": "test",
-        "download": false
+        "InvoiceNr": "1",
+        "Name": "test1",
+        "Price": 10.00,
+        "Date": "29/08/2002",
+        "Repeat": "3 maanden",
+        "Status": "test",
+        "Download": false
     },
     {
-        "invoiceNr": "2",
-        "name": "test2",
-        "price": 25.16,
-        "date": "30/08/2002",
-        "status": "test",
-        "download": true
+        "InvoiceNr": "2",
+        "Name": "test2",
+        "Price": 25.16,
+        "Date": "30/08/2002",
+        "Repeat": "1 maand",
+        "Status": "test",
+        "Download": true
+    },
+    {
+        "InvoiceNr": "2",
+        "Name": "test2",
+        "Price": 25.16,
+        "Date": "30/08/2002",
+        "Repeat": "1 maand",
+        "Status": "test",
+        "Download": true
+    },
+    {
+        "InvoiceNr": "2",
+        "Name": "test2",
+        "Price": 25.16,
+        "Date": "30/08/2002",
+        "Repeat": "1 maand",
+        "Status": "test",
+        "Download": true
+    },
+    {
+        "InvoiceNr": "2",
+        "Name": "test2",
+        "Price": 25.16,
+        "Date": "30/08/2002",
+        "Repeat": "1 maand",
+        "Status": "test",
+        "Download": true
+    },
+    {
+        "InvoiceNr": "2",
+        "Name": "test2",
+        "Price": 25.16,
+        "Date": "30/08/2002",
+        "Repeat": "1 maand",
+        "Status": "test",
+        "Download": true
+    },
+    {
+        "InvoiceNr": "2",
+        "Name": "test2",
+        "Price": 25.16,
+        "Date": "30/08/2002",
+        "Repeat": "1 maand",
+        "Status": "test",
+        "Download": true
     }
 ]

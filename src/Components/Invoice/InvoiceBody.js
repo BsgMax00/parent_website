@@ -5,23 +5,36 @@ const InvoiceBody = () => {
     return (
         <>
             <div className="container-fluid">
-                <div className="row text-center m-2">
-                    <div className="col-12">
-                        <div className="row border p-2 bg-light">
-                            <input type="checkbox" className="col-1"/>
-                            <div className="col-2 fw-bold">Factuur nummer</div>
-                            <div className="col-2 fw-bold">Naam</div>
-                            <div className="col-2 fw-bold">Prijs</div>
-                            <div className="col-2 fw-bold">Datum</div>
-                            <div className="col-2 fw-bold">Status</div>
-                            <div className="col-1 fw-bold">Download</div>
+                <div className="card rounded-0 shadow-lg">
+                    <div className="card-body p-0">
+                        <div className="table-responsive table-card">
+                            <table className="table table-striped table-hover align-middle table-nowrap mb-0">
+                                <thead>
+                                    <tr className="fw-bold">
+                                        <th scope="col" style={{ width: "50px" }}>
+                                            <div className="form-check m-0 d-flex justify-content-center">
+                                            <input className="form-check-input" type="checkbox" />
+                                            </div>
+                                        </th>
+                                        <th scope="col" style={{ width: "10%" }}>Factuur nummer</th>
+                                        <th scope="col">Naam</th>
+                                        <th scope="col">Prijs</th>
+                                        <th scope="col">Datum</th>
+                                        <th scope="col">Termijn</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col" className="text-center" style={{ width: "5%" }}>Actie</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {TestData.map((Invoice, index) => {
+                                        return (
+                                            <InvoiceRow key={index} Invoice={Invoice}/>
+                                        )
+                                    })} 
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    {TestData.map((data, index) => {
-                        return (
-                            <InvoiceRow key={index} Invoice={data}/>
-                        )
-                    })}   
                 </div>
             </div>
         </>

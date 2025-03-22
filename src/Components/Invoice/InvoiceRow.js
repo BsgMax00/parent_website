@@ -1,22 +1,28 @@
+import { MoreHoriz } from "@mui/icons-material";
+
 const InvoiceRow = ({ Invoice }) => {
     return (
         <>
-            <div className="col-12">
-                <div className="row p-2">
-                    <input type="checkbox" className="col-1"/>
-                    <div className="col-2">{Invoice.invoiceNr}</div>
-                    <div className="col-2">{Invoice.name}</div>
-                    <div className="col-2">{Invoice.price}</div>
-                    <div className="col-2">{Invoice.date}</div>
-                    <div className="col-2">{Invoice.status}</div>
-                    {Invoice.download ? (
-                        <div className="col-1">True</div>
-                    ) : (
-                        <div className="col-1">False</div>
-                    )}
-                </div>
-            </div>
-            <hr className="m-0"/>
+            <tr style={{ height: "60px" }}>
+                <td>
+                  <div className="form-check d-flex justify-content-center">
+                    <input className="form-check-input" type="checkbox" />
+                  </div>
+                </td>
+                <td>{Invoice.InvoiceNr}</td>
+                <td>{Invoice.Name}</td>
+                <td>{Invoice.Price.toFixed(2)}</td>
+                <td>{Invoice.Date}</td>
+                <td>{Invoice.Repeat}</td>
+                <td>{Invoice.Status}</td>
+                <td>
+                    <center>
+                        <button>
+                            <MoreHoriz></MoreHoriz>
+                        </button>
+                    </center>
+                </td>
+            </tr>
         </>
     );
 };
