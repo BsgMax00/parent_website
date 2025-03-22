@@ -1,4 +1,4 @@
-const MainPage = () => {
+const Dashboard = () => {
     return (
         <>
         
@@ -6,4 +6,4 @@ const MainPage = () => {
     )
 };
 
-export default MainPage;
+export default Dashboard;

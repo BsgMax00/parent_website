@@ -1,14 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import MainPage from './Pages/MainPage';
-import InvoicePage from './Pages/InvoicePage';
+import Dashboard from './Pages/Dashboard';
+import Invoice from './Pages/Invoice';
+import Layout from './Components/Layout';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage/>}/>
-        <Route path="/facturen" element={<InvoicePage/>}/>
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<Dashboard/>}/>
+          <Route path="/facturen" element={<Invoice/>}/>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
