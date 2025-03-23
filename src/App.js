@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Dashboard from './Pages/Dashboard';
-import Invoice from './Pages/Invoice';
+import InvoiceManagment from './Pages/InvoiceManagment';
 import Layout from './Components/Layout';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route index element={<Dashboard/>}/>
-          <Route path="/facturen" element={<Invoice/>}/>
+          <Route path="/facturen" element={<InvoiceManagment/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
