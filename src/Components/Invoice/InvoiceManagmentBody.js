@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { TestData } from "../../data/testData";
-import InvoiceRow from "./InvoiceRow";
-
+import { useContext, useState } from "react";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+
+import { InvoiceContext } from "../../Contexts/InvoiceContext";
+
+import InvoiceRow from "./InvoiceRow";
 
 const InvoiceManagmentBody = () => {
     const [ ArrayIndex, setArrayIndex ] = useState(0);
+    const { invoiceData, invoiceChunks, setInvoiceChunks } = useContext(InvoiceContext);
 
     const addArray = () => {
         setArrayIndex(ArrayIndex + 1)
@@ -38,11 +40,17 @@ const InvoiceManagmentBody = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {TestData[ArrayIndex].map((Invoice, index) => {
-                                        return (
+                                    {Array.isArray(invoiceData[ArrayIndex]) ? (
+                                        invoiceData[ArrayIndex].map((Invoice, index) => (
                                             <InvoiceRow key={index} Invoice={Invoice}/>
-                                        )
-                                    })} 
+                                        ))
+                                    ) : (
+                                        <tr>
+                                            <td colSpan={5} style={{ textAlign: 'center' }}>
+                                                Loading...
+                                            </td>
+                                        </tr>
+                                    )}
                                 </tbody>
                             </table>
                         </div>
@@ -52,12 +60,14 @@ const InvoiceManagmentBody = () => {
                     <p>Test 1</p>
                     <div>
                         {ArrayIndex !== 0 ? (<button onClick={minusArray}><ChevronLeft/></button>) : (<></>)}
-                        {ArrayIndex !== TestData.length - 1 ? (<button onClick={addArray}><ChevronRight/></button>) : (<></>)}
+                        {ArrayIndex !== invoiceData.length - 1 ? (<button onClick={addArray}><ChevronRight/></button>) : (<></>)}
                     </div>
                 </div>
-                <div className="d-flex justify-content-between align-items-center text-center">
-                    
-                </div>
+                {/*
+                    <div className="d-flex justify-content-between align-items-center text-center">
+                        <input value={invoiceChunks} onChange={e => setInvoiceChunks(parseInt(e.target.value) || 10)}/>
+                    </div>
+                */}
             </div>
         </div>
         </>
