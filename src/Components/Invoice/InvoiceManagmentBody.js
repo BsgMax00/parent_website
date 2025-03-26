@@ -4,10 +4,11 @@ import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { InvoiceContext } from "../../Contexts/InvoiceContext";
 
 import InvoiceRow from "./InvoiceRow";
+import InvoiceManagmentDropdown from "./InvoiceManagmentDropdown";
 
 const InvoiceManagmentBody = () => {
     const [ ArrayIndex, setArrayIndex ] = useState(0);
-    const { invoiceData, invoiceChunks, setInvoiceChunks } = useContext(InvoiceContext);
+    const { invoiceData } = useContext(InvoiceContext);
 
     const addArray = () => {
         setArrayIndex(ArrayIndex + 1)
@@ -19,8 +20,11 @@ const InvoiceManagmentBody = () => {
 
     return (
         <>
-        <div className="col-lg-6 col-md-12 col-sm-12">
+        <div className="col-12">
             <div className="container-fluid">
+                <div className="d-flex justify-content-end">
+                    <button>Maak factuur</button>
+                </div>
                 <div className="card rounded-0 shadow-lg">
                     <div className="card-body p-0">
                         <div className="table-responsive table-card">
@@ -63,11 +67,7 @@ const InvoiceManagmentBody = () => {
                         {ArrayIndex !== invoiceData.length - 1 ? (<button onClick={addArray}><ChevronRight/></button>) : (<></>)}
                     </div>
                 </div>
-                {/*
-                    <div className="d-flex justify-content-between align-items-center text-center">
-                        <input value={invoiceChunks} onChange={e => setInvoiceChunks(parseInt(e.target.value) || 10)}/>
-                    </div>
-                */}
+                <InvoiceManagmentDropdown/>
             </div>
         </div>
         </>

@@ -1,9 +1,10 @@
 class Invoice {
-    constructor(Checked, Name, Price, Date, Status, Download){
-        this.Checked = Checked;
+    constructor(InvoiceNr, Name, Price, Date, Repeat, Status, Download){
+        this.InvoiceNr = InvoiceNr
         this.Name = Name;
         this.Price = Price;
         this.Date = Date;
+        this.Repeat = Repeat
         this.Status = Status;
         this.Download = Download;
     };

@@ -6,7 +6,7 @@ export const serviceGetInvoiceData = ( invoiceChunks ) => {
     const convertedInvoiceDataChunked = [];
 
     const convertedInvoiceData = TestData.map(data =>
-        new Invoice(false, data.Name, data.Price, data.Date, data.Status, data.Download)
+        new Invoice(data.InvoiceNr, data.Name, data.Price, data.Date, data.Repeat, data.Status, data.Download)
     )
 
     for (let i = 0; i < convertedInvoiceData.length; i+= invoiceChunks) {
