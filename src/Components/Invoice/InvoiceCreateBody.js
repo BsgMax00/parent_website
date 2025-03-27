@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Invoice from "../../Classes/Invoice";
 
 const InvoiceCreateBody = () => {
     const [ invoiceName, setInvoiceName ] = useState("");
@@ -7,10 +6,12 @@ const InvoiceCreateBody = () => {
     const [ invoiceDate, setInvoiceDate ] = useState("");
     const [ invoiceRepeat, setInvoiceRepeat ] = useState("");
     const [ invoiceStatus, setInvoiceStatus ] = useState("");
-
+    
+    /*
     const CreateInvoice = () => {
         const data = new Invoice("0", invoiceName, invoicePrice, invoiceDate, invoiceRepeat, invoiceStatus, "")
     }
+    */
     
     return (
         <>
@@ -35,7 +36,7 @@ const InvoiceCreateBody = () => {
                     <label for="Status">Status:</label>
                     <input id="Status" name="Status" value={invoiceStatus} onChange={(e) => setInvoiceStatus(e.target.value)}/>
                 </div>
-                <button onClick={CreateInvoice}>Maak Invoice</button>
+                <button>Maak Invoice</button>
             </div>
         </>
     );
