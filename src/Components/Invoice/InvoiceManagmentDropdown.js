@@ -1,8 +1,4 @@
-import { useContext } from "react";
-import { InvoiceContext } from "../../Contexts/InvoiceContext";
-
-const InvoiceManagmentDropdown = () => {
-    const { setInvoiceChunks } = useContext(InvoiceContext)
+const InvoiceManagmentDropdown = ({ children }) => {
     return (
         <>
             <div className="dropdown">
@@ -10,9 +6,7 @@ const InvoiceManagmentDropdown = () => {
                     TestButton
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <p className="dropdown-item" onClick={() => setInvoiceChunks(5)}>5</p>
-                    <p className="dropdown-item" onClick={() => setInvoiceChunks(10)}>10</p>
-                    <p className="dropdown-item" onClick={() => setInvoiceChunks(25)}>25</p>
+                    {children}
                 </div>
             </div>
         </>

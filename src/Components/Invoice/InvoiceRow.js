@@ -10,10 +10,10 @@ const InvoiceRow = ({ Invoice }) => {
                     <input className="form-check-input" type="checkbox" />
                   </div>
                 </td>
-                <td>{Invoice.Name}</td>
-                <td>{Invoice.Price.toFixed(2)}</td>
-                <td>{Invoice.Date}</td>
-                <td>{Invoice.Status}</td>
+                <td>{Invoice.InvoiceName}</td>
+                <td>{Invoice.InvoicePrice.toFixed(2)}</td>
+                <td>{Invoice.InvoiceDate}</td>
+                <td>{Invoice.InvoiceStatus}</td>
                 <td className="text-center">
                     <button>
                         <MoreHoriz/>

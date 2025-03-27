@@ -7,13 +7,15 @@ export const InvoiceProvider = ({ children }) => {
     const [ invoiceData, setInvoiceData ] = useState([]);
     const [ invoiceChunks, setInvoiceChunks ] = useState(10);
 
-    const getInvoiceData = () => {
-        const data = serviceGetInvoiceData(invoiceChunks);
+    const getInvoiceData = async () => {
+        const data = await serviceGetInvoiceData(invoiceChunks);
+        console.log(data)
         setInvoiceData(data);
     }
 
     useEffect(() => {
         getInvoiceData();
+        // eslint-disable-next-line
     }, [invoiceChunks])
 
     return (

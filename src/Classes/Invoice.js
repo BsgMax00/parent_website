@@ -1,12 +1,14 @@
 class Invoice {
-    constructor(InvoiceNr, Name, Price, Date, Repeat, Status, Download){
-        this.InvoiceNr = InvoiceNr
-        this.Name = Name;
-        this.Price = Price;
-        this.Date = Date;
-        this.Repeat = Repeat
-        this.Status = Status;
-        this.Download = Download;
+    constructor(InvoiceId, InvoiceName, InvoiceDescription = null, InvoicePrice, InvoiceDate, InvoiceNextDate = null, InvoiceRepeat, InvoiceStatus, NextInvoice = null){
+        this.InvoiceId = InvoiceId;
+        this.InvoiceName = InvoiceName;
+        this.InvoiceDescription = InvoiceDescription;
+        this.InvoicePrice = InvoicePrice;
+        this.InvoiceDate = InvoiceDate;
+        this.InvoiceNextDate = InvoiceNextDate;
+        this.InvoiceRepeat = InvoiceRepeat;
+        this.InvoiceStatus = InvoiceStatus;
+        this.NextInvoice = NextInvoice;
     };
 };
 

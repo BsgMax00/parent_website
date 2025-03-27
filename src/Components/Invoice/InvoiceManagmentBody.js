@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 import { InvoiceContext } from "../../Contexts/InvoiceContext";
@@ -8,15 +8,20 @@ import InvoiceManagmentDropdown from "./InvoiceManagmentDropdown";
 
 const InvoiceManagmentBody = () => {
     const [ ArrayIndex, setArrayIndex ] = useState(0);
-    const { invoiceData } = useContext(InvoiceContext);
+    const { invoiceData, setInvoiceChunks } = useContext(InvoiceContext);
 
     const addArray = () => {
-        setArrayIndex(ArrayIndex + 1)
-    }
+        setArrayIndex(ArrayIndex + 1);
+    };
 
     const minusArray = () => {
-        setArrayIndex(ArrayIndex - 1)
-    }
+        setArrayIndex(ArrayIndex - 1);
+    };
+
+    const changeChunk = ( chunk ) => {
+        setInvoiceChunks(chunk);
+        setArrayIndex(0);
+    };
 
     return (
         <>
@@ -67,11 +72,15 @@ const InvoiceManagmentBody = () => {
                         {ArrayIndex !== invoiceData.length - 1 ? (<button onClick={addArray}><ChevronRight/></button>) : (<></>)}
                     </div>
                 </div>
-                <InvoiceManagmentDropdown/>
+                <InvoiceManagmentDropdown>
+                    <p className="dropdown-item" onClick={() => changeChunk(5)}>5</p>
+                    <p className="dropdown-item" onClick={() => changeChunk(10)}>10</p>
+                    <p className="dropdown-item" onClick={() => changeChunk(25)}>25</p>
+                </InvoiceManagmentDropdown>
             </div>
         </div>
         </>
-    )
-}
+    );
+};
 
 export default InvoiceManagmentBody;
