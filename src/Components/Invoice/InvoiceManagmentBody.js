@@ -30,12 +30,12 @@ const InvoiceManagmentBody = () => {
             InvoiceDataChunked.push(data.slice(i, i + 10));
         };
     
-        setArrayIndex(0);
         return InvoiceDataChunked;
     }
 
     useEffect(() => {
         setChunkedInvoiceData(chunkInvoiceData(invoiceData));
+        setArrayIndex(0);
         // eslint-disable-next-line
     }, [invoiceData, sortingOption])
 
@@ -67,11 +67,6 @@ const InvoiceManagmentBody = () => {
                             <table className="table table-striped table-hover align-middle table-nowrap mb-0" style={{ tableLayout: "fixed", width: "100%"}}>
                                 <thead>
                                     <tr className="fw-bold">
-                                        <th scope="col" style={{ width: "5%" }}>
-                                            <div className="form-check m-0 d-flex justify-content-center">
-                                                <input className="form-check-input" type="checkbox" />
-                                            </div>
-                                        </th>
                                         <th scope="col" style={{ width: "18%" }}>Naam</th>
                                         <th scope="col" style={{ width: "18%" }}>Datum</th>
                                         <th scope="col" style={{ width: "18%" }}>Prijs</th>
@@ -87,7 +82,7 @@ const InvoiceManagmentBody = () => {
                                         ))
                                     ) : (
                                         <tr>
-                                            <td colSpan={7} style={{ textAlign: 'center' }}>
+                                            <td colSpan={6} style={{ textAlign: 'center' }}>
                                                 Geen facturen gevonden.
                                             </td>
                                         </tr>
@@ -100,7 +95,7 @@ const InvoiceManagmentBody = () => {
                 <div className="d-flex justify-content-end mt-2">
                     <div>
                         {ArrayIndex !== 0 ? (<button onClick={() => {setArrayIndex(ArrayIndex - 1)}}><ChevronLeft/></button>) : (<></>)}
-                        {ArrayIndex !== chunkedInvoiceData.length - 1 ? (<button onClick={() => {setArrayIndex(ArrayIndex + 1)}}><ChevronRight/></button>) : (<></>)}
+                        {ArrayIndex !== chunkedInvoiceData.length - 1 && ArrayIndex !== 0 ? (<button onClick={() => {setArrayIndex(ArrayIndex + 1)}}><ChevronRight/></button>) : (<></>)}
                     </div>
                 </div>
             </div>
