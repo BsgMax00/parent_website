@@ -1,14 +1,64 @@
 {
-    "invoices": [
-        {
-            "name": "test1",
-            "price": 10,
-            "date": "29/08/2002"
-        },
-        {
-            "name": "test2",
-            "price": 25.16,
-            "date": "30/08/2002"
-        }
-    ]
+  "Invoice": [
+    {
+      "id": "b351",
+      "InvoiceId": 0,
+      "InvoiceName": "test 1",
+      "InvoiceDescription": "test description",
+      "InvoicePrice": 120.12,
+      "InvoiceDate": "2025-03-05",
+      "InvoiceNextDate": null,
+      "InvoiceRepeat": "wekelijks",
+      "InvoiceStatus": "geanulleerd",
+      "NextInvoice": null
+    },
+    {
+      "id": "db7a",
+      "InvoiceId": 1,
+      "InvoiceName": "Test 2",
+      "InvoiceDescription": "description, I am watching komi-san (the show XD)right now",
+      "InvoicePrice": 51.75,
+      "InvoiceDate": "2025-03-31",
+      "InvoiceNextDate": null,
+      "InvoiceRepeat": "jaarlijks",
+      "InvoiceStatus": "Niet betaald",
+      "NextInvoice": null
+    },
+    {
+      "id": "5052",
+      "InvoiceId": 2,
+      "InvoiceName": "sdf",
+      "InvoiceDescription": "dfqs",
+      "InvoicePrice": 124,
+      "InvoiceDate": "2023-01-31",
+      "InvoiceNextDate": null,
+      "InvoiceRepeat": "Niet",
+      "InvoiceStatus": "Niet betaald",
+      "NextInvoice": null
+    },
+    {
+      "id": "9b14",
+      "InvoiceId": 3,
+      "InvoiceName": "sdf",
+      "InvoiceDescription": "dfqs",
+      "InvoicePrice": 124,
+      "InvoiceDate": "2096-01-31",
+      "InvoiceNextDate": null,
+      "InvoiceRepeat": "Niet",
+      "InvoiceStatus": "Niet betaald",
+      "NextInvoice": null
+    },
+    {
+      "id": "2e10",
+      "InvoiceId": 4,
+      "InvoiceName": "sdf",
+      "InvoiceDescription": "dfqs",
+      "InvoicePrice": 124,
+      "InvoiceDate": "1986-01-31",
+      "InvoiceNextDate": null,
+      "InvoiceRepeat": "Niet",
+      "InvoiceStatus": "Niet betaald",
+      "NextInvoice": null
+    }
+  ]
 }

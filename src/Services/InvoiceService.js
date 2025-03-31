@@ -2,19 +2,29 @@ import { serviceFetch } from "./BaseService";
 
 import Invoice from "../Classes/Invoice";
 
-export const serviceGetInvoiceData = async ( invoiceChunks ) => {
-    const convertedInvoiceDataChunked = [];
-    const data = await serviceFetch("GET", "http://localhost:5293/Invoice");
+const baseUrl = "http://localhost:4000"
 
-    console.log(data)
+export const serviceGetInvoiceData = async () => {
+    const data = await serviceFetch("GET", `${baseUrl}/Invoice`);
 
     const convertedInvoiceData = data.map(data =>
-        new Invoice(data.invoiceId, data.invoiceName, data.invoiceDescription, data.invoicePrice, data.invoiceDate, data.invoiceNextDate, data.invoiceRepeat, data.invoiceStatus, data.nextInvoice)
+        new Invoice(data.InvoiceId, data.InvoiceName, data.InvoiceDescription, data.InvoicePrice, FormatDate(data.InvoiceDate), data.InvoiceNextDate, data.InvoiceRepeat, data.InvoiceStatus, data.NextInvoice)
     )
 
-    for (let i = 0; i < convertedInvoiceData.length; i += invoiceChunks) {
-        convertedInvoiceDataChunked.push(convertedInvoiceData.slice(i, i + invoiceChunks))
-    }
+    return convertedInvoiceData;
+}
 
-    return convertedInvoiceDataChunked;
+export const servicePostInvoiceData = async ( invoice ) => {
+    const body = JSON.stringify(invoice);
+    await serviceFetch("POST", `${baseUrl}/Invoice`, body);
+}
+
+const FormatDate = ( invoiceDate ) => {
+    const date = new Date(invoiceDate);
+
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    return `${year}-${month}-${day}`;
 }
