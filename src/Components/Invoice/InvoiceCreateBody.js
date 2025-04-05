@@ -53,7 +53,7 @@ const InvoiceCreateBody = () => {
                     <label for="Status">Status:</label>
                     <InvoiceManagmentDropdown Label={`Status: ${invoiceStatus}`}>
                         <InvoiceManagmentDropdownItem event={() => setInvoiceStatus("Niet betaald")} value={"Niet betaald"}/>
-                        <InvoiceManagmentDropdownItem event={() => setInvoiceStatus("betaaldt")} value={"betaaldt"}/>
+                        <InvoiceManagmentDropdownItem event={() => setInvoiceStatus("betaaldt")} value={"betaald"}/>
                         <InvoiceManagmentDropdownItem event={() => setInvoiceStatus("geanulleerd")} value={"geanulleerd"}/>
                         <InvoiceManagmentDropdownItem event={() => setInvoiceStatus("Geld terug")} value={"Geld terug"}/>
                     </InvoiceManagmentDropdown>

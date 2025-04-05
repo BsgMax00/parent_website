@@ -11,7 +11,7 @@ const Layout = () => {
                             <SidebarBody/>
                         </div>
                     </div>
-                    <div className="col">
+                    <div className="col p-3">
                         <Outlet/>
                     </div>
                 </div>

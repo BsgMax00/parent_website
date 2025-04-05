@@ -9,7 +9,7 @@
       "InvoiceDate": "2025-03-05",
       "InvoiceNextDate": null,
       "InvoiceRepeat": "wekelijks",
-      "InvoiceStatus": "geanulleerd",
+      "InvoiceStatus": "betaald",
       "NextInvoice": null
     },
     {
