@@ -71,7 +71,7 @@ const InvoiceManagmentBody = () => {
                                                 <th scope="col" style={{ width: "18%" }}>Naam</th>
                                                 <th scope="col" style={{ width: "18%" }}>Datum</th>
                                                 <th scope="col" style={{ width: "18%" }}>Prijs</th>
-                                                <th scope="col" style={{ width: "18%" }}>Repeat</th>
+                                                <th scope="col" style={{ width: "18%" }}>Herhaling</th>
                                                 <th scope="col" style={{ width: "18%" }}>Status</th>
                                                 <th scope="col" className="text-center" style={{ width: "10%" }}>Actie</th>
                                             </tr>
