@@ -42,60 +42,70 @@ const InvoiceManagmentBody = () => {
     return (
         <>
             <div className="col-12 px-2">
-                <div className="pt-3">
-                    {Array.isArray(chunkedInvoiceData[ArrayIndex]) ? (
-                        <div className="d-flex align-items-center justify-content-between">
-                            <InvoiceManagmentBodyDropdown Label={`sorteer op: ${sortingOption}`}>
-                                <InvoiceManagmentDropdownItem event={() => setSortingOption("naam asc")} value={"naam asc"}/>
-                                <InvoiceManagmentDropdownItem event={() => setSortingOption("naam desc")} value={"naam desc"}/>
-                                <InvoiceManagmentDropdownItem event={() => setSortingOption("prijs asc")} value={"prijs asc"}/>
-                                <InvoiceManagmentDropdownItem event={() => setSortingOption("prijs desc")} value={"prijs desc"}/>
-                                <InvoiceManagmentDropdownItem event={() => setSortingOption("datum asc")} value={"datum asc"}/>
-                                <InvoiceManagmentDropdownItem event={() => setSortingOption("datum desc")} value={"datum desc"}/>
-                                <InvoiceManagmentDropdownItem event={() => setSortingOption("status")} value={"status"}/>
-                            </InvoiceManagmentBodyDropdown>
-                            <a href="/facturen/aanmaken">Maak factuur</a>
-                        </div>
-                    ) : (
-                        <div className="d-flex align-middle justify-content-end">
-                            <a href="/facturen/aanmaken">Maak factuur</a>
-                        </div>
-                    )}
-                    <div className="card rounded-0 shadow-lg mt-2">
-                        <div className="card-body p-0">
-                            <div className="table-responsive table-card">
-                                <table className="table table-striped table-hover align-middle table-nowrap mb-0" style={{ tableLayout: "fixed", width: "100%"}}>
-                                    <thead>
-                                        <tr className="fw-bold">
-                                            <th scope="col" style={{ width: "18%" }}>Naam</th>
-                                            <th scope="col" style={{ width: "18%" }}>Datum</th>
-                                            <th scope="col" style={{ width: "18%" }}>Prijs</th>
-                                            <th scope="col" style={{ width: "18%" }}>Repeat</th>
-                                            <th scope="col" style={{ width: "18%" }}>Status</th>
-                                            <th scope="col" className="text-center" style={{ width: "10%" }}>Actie</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {Array.isArray(chunkedInvoiceData[ArrayIndex]) ? (
-                                            chunkedInvoiceData[ArrayIndex].map((Invoice, index) => (
-                                                <InvoiceRow key={index} Invoice={Invoice}/>
-                                            ))
-                                        ) : (
-                                            <tr>
-                                                <td colSpan={6} style={{ textAlign: 'center' }}>
-                                                    Geen facturen gevonden.
-                                                </td>
+                <div className="card m-2">
+                    <div className="card-body shadow-lg">
+                        {Array.isArray(chunkedInvoiceData[ArrayIndex]) ? (
+                            <div className="d-flex align-items-center justify-content-between">
+                                <InvoiceManagmentBodyDropdown Label={`sorteer op: ${sortingOption}`}>
+                                    <InvoiceManagmentDropdownItem event={() => setSortingOption("naam asc")} value={"naam asc"}/>
+                                    <InvoiceManagmentDropdownItem event={() => setSortingOption("naam desc")} value={"naam desc"}/>
+                                    <InvoiceManagmentDropdownItem event={() => setSortingOption("prijs asc")} value={"prijs asc"}/>
+                                    <InvoiceManagmentDropdownItem event={() => setSortingOption("prijs desc")} value={"prijs desc"}/>
+                                    <InvoiceManagmentDropdownItem event={() => setSortingOption("datum asc")} value={"datum asc"}/>
+                                    <InvoiceManagmentDropdownItem event={() => setSortingOption("datum desc")} value={"datum desc"}/>
+                                    <InvoiceManagmentDropdownItem event={() => setSortingOption("status")} value={"status"}/>
+                                </InvoiceManagmentBodyDropdown>
+                                <a href="/facturen/aanmaken" className="btn btn-primary">Maak factuur</a>
+                            </div>
+                        ) : (
+                            <div className="d-flex justify-content-end mb-2">
+                                <a href="/facturen/aanmaken" className="btn btn-primary">Maak factuur</a>
+                            </div>
+                        )}
+                        <div className="card rounded-0 mt-2">
+                            <div className="card-body p-0">
+                                <div className="table-responsive table-card">
+                                    <table className="table table-striped table-hover align-middle table-nowrap mb-0" style={{ tableLayout: "fixed", width: "100%"}}>
+                                        <thead>
+                                            <tr className="fw-bold">
+                                                <th scope="col" style={{ width: "18%" }}>Naam</th>
+                                                <th scope="col" style={{ width: "18%" }}>Datum</th>
+                                                <th scope="col" style={{ width: "18%" }}>Prijs</th>
+                                                <th scope="col" style={{ width: "18%" }}>Repeat</th>
+                                                <th scope="col" style={{ width: "18%" }}>Status</th>
+                                                <th scope="col" className="text-center" style={{ width: "10%" }}>Actie</th>
                                             </tr>
-                                        )}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            {Array.isArray(chunkedInvoiceData[ArrayIndex]) ? (
+                                                chunkedInvoiceData[ArrayIndex].map((Invoice, index) => (
+                                                    <InvoiceRow key={index} Invoice={Invoice}/>
+                                                ))
+                                            ) : (
+                                                <tr>
+                                                    <td colSpan={6} style={{ textAlign: 'center' }}>
+                                                        Geen facturen gevonden.
+                                                    </td>
+                                                </tr>
+                                            )}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="d-flex justify-content-end mt-2">
-                        <div>
-                            {ArrayIndex !== 0 ? (<button onClick={() => {setArrayIndex(ArrayIndex - 1)}}><ChevronLeft/></button>) : (<></>)}
-                            {ArrayIndex !== chunkedInvoiceData.length - 1 && ArrayIndex !== 0 ? (<button onClick={() => {setArrayIndex(ArrayIndex + 1)}}><ChevronRight/></button>) : (<></>)}
+                        <div className="d-flex justify-content-end mt-2">
+                            <div className="btn-group">
+                                {ArrayIndex !== 0 && (
+                                    <button className="btn btn-outline-secondary" onClick={() => setArrayIndex(ArrayIndex - 1)}>
+                                        <ChevronLeft />
+                                    </button>
+                                )}
+                                {ArrayIndex !== chunkedInvoiceData.length - 1 && (
+                                    <button className="btn btn-outline-secondary" onClick={() => setArrayIndex(ArrayIndex + 1)}>
+                                        <ChevronRight />
+                                    </button>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>

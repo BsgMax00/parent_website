@@ -18,7 +18,7 @@ const InvoiceRow = ({ Invoice }) => {
                 <td><div style={ellipsisCell}>{Invoice.InvoiceRepeat}</div></td>
                 <td><div style={ellipsisCell}>{Invoice.InvoiceStatus}</div></td>
                 <td className="text-center">
-                    <button>
+                    <button className="btn-group">
                         <MoreHoriz/>
                     </button>
                 </td>
