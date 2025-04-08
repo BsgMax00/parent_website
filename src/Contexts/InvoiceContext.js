@@ -5,6 +5,7 @@ export const InvoiceContext = createContext();
 
 export const InvoiceProvider = ({ children }) => {
     const [ invoiceData, setInvoiceData ] = useState([]);
+    const [ arrayIndex, setArrayIndex ] = useState(0);
 
     const getLastInvoiceIndex = () => {
         const length = invoiceData.length;
@@ -31,7 +32,7 @@ export const InvoiceProvider = ({ children }) => {
     }, [])
 
     return (
-        <InvoiceContext.Provider value={{ invoiceData, setInvoiceData, postInvoiceData, getLastInvoiceIndex }}>
+        <InvoiceContext.Provider value={{ invoiceData, setInvoiceData, arrayIndex, setArrayIndex, postInvoiceData, getLastInvoiceIndex }}>
             {children}
         </InvoiceContext.Provider>
     )

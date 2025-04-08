@@ -11,7 +11,7 @@ const InvoiceRow = ({ Invoice }) => {
 
     return (
         <>
-            <tr>
+            <tr title={Invoice.InvoiceDescription}>
                 <td><div style={ellipsisCell}>{Invoice.InvoiceName}</div></td>
                 <td><div style={ellipsisCell}>{Invoice.InvoiceDate}</div></td>
                 <td><div style={ellipsisCell}>€ {Invoice.InvoicePrice.toFixed(2)}</div></td>

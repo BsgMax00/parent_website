@@ -1,17 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-
 import { InvoiceContext } from "../../Contexts/InvoiceContext";
 
 import InvoiceRow from "./InvoiceRow";
 import InvoiceManagmentBodyDropdown from "./InvoiceManagmentDropdown"
 import InvoiceManagmentDropdownItem from "./InvoiceManagmentDropdownItem";
+import InvoiceManagmentPagination from "./InvoiceManagmentPagination";
 
 const InvoiceManagmentBody = () => {
-    const [ ArrayIndex, setArrayIndex ] = useState(0);
     const [ chunkedInvoiceData, setChunkedInvoiceData ] = useState([]);
     const [ sortingOption, setSortingOption ] = useState("naam asc");
-    const { invoiceData } = useContext(InvoiceContext);
+    const { invoiceData, arrayIndex, setArrayIndex } = useContext(InvoiceContext);
 
     const chunkInvoiceData = ( invoices ) => {
         const InvoiceDataChunked = [];
@@ -44,7 +42,7 @@ const InvoiceManagmentBody = () => {
             <div className="col-12 px-2">
                 <div className="card m-2">
                     <div className="card-body shadow-lg">
-                        {Array.isArray(chunkedInvoiceData[ArrayIndex]) ? (
+                        {Array.isArray(chunkedInvoiceData[arrayIndex]) ? (
                             <div className="d-flex align-items-center justify-content-between">
                                 <InvoiceManagmentBodyDropdown Label={`sorteer op: ${sortingOption}`}>
                                     <InvoiceManagmentDropdownItem event={() => setSortingOption("naam asc")} value={"naam asc"}/>
@@ -77,8 +75,8 @@ const InvoiceManagmentBody = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {Array.isArray(chunkedInvoiceData[ArrayIndex]) ? (
-                                                chunkedInvoiceData[ArrayIndex].map((Invoice, index) => (
+                                            {Array.isArray(chunkedInvoiceData[arrayIndex]) ? (
+                                                chunkedInvoiceData[arrayIndex].map((Invoice, index) => (
                                                     <InvoiceRow key={index} Invoice={Invoice}/>
                                                 ))
                                             ) : (
@@ -93,20 +91,7 @@ const InvoiceManagmentBody = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="d-flex justify-content-end mt-2">
-                            <div className="btn-group">
-                                {ArrayIndex !== 0 && (
-                                    <button className="btn btn-outline-secondary" onClick={() => setArrayIndex(ArrayIndex - 1)}>
-                                        <ChevronLeft />
-                                    </button>
-                                )}
-                                {ArrayIndex !== chunkedInvoiceData.length - 1 && (
-                                    <button className="btn btn-outline-secondary" onClick={() => setArrayIndex(ArrayIndex + 1)}>
-                                        <ChevronRight />
-                                    </button>
-                                )}
-                            </div>
-                        </div>
+                        <InvoiceManagmentPagination chunkedInvoiceData={chunkedInvoiceData}/>
                     </div>
                 </div>
             </div>
