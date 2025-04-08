@@ -35,7 +35,7 @@ const InvoiceManagmentPagination = ({ chunkedInvoiceData }) => {
 
     return (
         <>
-            <div className="d-flex align-items-center justify-content-center mt-2">
+            <div className="d-flex justify-content-center mt-2">
                 <div className="btn-group">
                     {arrayIndex !== 0 && (
                         <button className="fw-bold px-3 py-2 btn btn-outline-secondary" style={{width:"54px", height:"54px"}} onClick={() => setArrayIndex(arrayIndex - 1)}><ChevronLeft/></button>
