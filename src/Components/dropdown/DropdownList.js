@@ -1,8 +1,8 @@
-const InvoiceManagmentDropdown = ({ children, Label }) => {
+const DropdownList = ({ children, Label, styling }) => {
     return (
         <>
             <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <button className={styling} type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     {Label}
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -13,4 +13,4 @@ const InvoiceManagmentDropdown = ({ children, Label }) => {
     );
 };
 
-export default InvoiceManagmentDropdown;
+export default DropdownList;

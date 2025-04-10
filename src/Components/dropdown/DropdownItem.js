@@ -1,4 +1,4 @@
-const InvoiceManagmentDropdownItem = ({ event, value }) => {
+const DropdownItem = ({ event, value }) => {
     return (
         <>
             <p className="dropdown-item my-1" onClick={event}>{value}</p>
@@ -6,4 +6,4 @@ const InvoiceManagmentDropdownItem = ({ event, value }) => {
     );
 };
 
-export default InvoiceManagmentDropdownItem;
+export default DropdownItem;

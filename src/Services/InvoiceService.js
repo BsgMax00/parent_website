@@ -8,7 +8,7 @@ export const serviceGetInvoiceData = async () => {
     const data = await serviceFetch("GET", `${baseUrl}/Invoice`);
 
     const convertedInvoiceData = data.map(data =>
-        new Invoice(data.InvoiceId, data.InvoiceName, data.InvoiceDescription, data.InvoicePrice, FormatDate(data.InvoiceDate), data.InvoiceNextDate, data.InvoiceRepeat, data.InvoiceStatus, data.NextInvoice)
+        new Invoice(data.id, data.InvoiceId, data.InvoiceName, data.InvoiceDescription, data.InvoicePrice, FormatDate(data.InvoiceDate), data.InvoiceNextDate, data.InvoiceRepeat, data.InvoiceStatus, data.NextInvoice)
     )
 
     return convertedInvoiceData;
@@ -17,6 +17,10 @@ export const serviceGetInvoiceData = async () => {
 export const servicePostInvoiceData = async ( invoice ) => {
     const body = JSON.stringify(invoice);
     await serviceFetch("POST", `${baseUrl}/Invoice`, body);
+}
+
+export const serviceDeleteInvoiceData = async ( invoiceID ) => {
+    await serviceFetch("DELETE", `${baseUrl}/Invoice/${invoiceID}`);
 }
 
 const FormatDate = ( invoiceDate ) => {

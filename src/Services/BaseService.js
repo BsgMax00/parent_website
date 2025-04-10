@@ -10,7 +10,7 @@ export const serviceFetch = async (method, url, body = null) => {
         };
 
         const response = await fetch(`${url}`, settings)
-        if (!response.ok) { throw new Error("something went wrong in the delete request."); };
+        if (!response.ok) { throw new Error(`something went wrong in the ${method} request.`); };
         const data = await response.json();
 
         return data;

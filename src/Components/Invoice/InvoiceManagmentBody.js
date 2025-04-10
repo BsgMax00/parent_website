@@ -10,8 +10,8 @@ const InvoiceManagmentBody = () => {
     const { invoiceData, arrayIndex, setArrayIndex } = useContext(InvoiceContext);
     const tableHeaders = [
         { label: "Naam", key: "name" },
-        { label: "Prijs", key: "price" },
         { label: "Datum", key: "date" },
+        { label: "Prijs", key: "price" },
         { label: "Herhaling", key: "repeat" },
         { label: "Status", key: "status" }
     ]

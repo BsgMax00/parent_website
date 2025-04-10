@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import { InvoiceContext } from "../../Contexts/InvoiceContext";
 
 import Invoice from "../../Classes/Invoice";
-import InvoiceManagmentDropdown from "./InvoiceManagmentDropdown";
-import InvoiceManagmentDropdownItem from "./InvoiceManagmentDropdownItem";
+import DropdownList from "../dropdown/DropdownList";
+import DropdownItem from "../dropdown/DropdownItem";
 
 const InvoiceCreateBody = () => {
     const { postInvoiceData, getLastInvoiceIndex } = useContext(InvoiceContext);
@@ -15,7 +15,7 @@ const InvoiceCreateBody = () => {
     const [ invoiceStatus, setInvoiceStatus ] = useState("Niet betaald");
     
     const CreateInvoice = () => {
-        const data = new Invoice(Number(getLastInvoiceIndex()) + 1, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, null, invoiceRepeat, invoiceStatus, null);
+        const data = new Invoice(String(getLastInvoiceIndex() + 1), Number(getLastInvoiceIndex()) + 1, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, null, invoiceRepeat, invoiceStatus, null);
         postInvoiceData(data);
     }
 
@@ -40,23 +40,23 @@ const InvoiceCreateBody = () => {
                 </div>
                 <div>
                     <label for="Repeat">Repeat:</label>
-                    <InvoiceManagmentDropdown Label={`Repeat: ${invoiceRepeat}`}>
-                        <InvoiceManagmentDropdownItem event={() => setInvoiceRepeat("Niet")} value={"Niet"}/>
-                        <InvoiceManagmentDropdownItem event={() => setInvoiceRepeat("wekelijks")} value={"wekelijks"}/>
-                        <InvoiceManagmentDropdownItem event={() => setInvoiceRepeat("maandelijks")} value={"maandelijks"}/>
-                        <InvoiceManagmentDropdownItem event={() => setInvoiceRepeat("3 maandelijks")} value={"3 maandelijks"}/>
-                        <InvoiceManagmentDropdownItem event={() => setInvoiceRepeat("6 maandelijks")} value={"6 maandelijks"}/>
-                        <InvoiceManagmentDropdownItem event={() => setInvoiceRepeat("jaarlijks")} value={"jaarlijks"}/>
-                    </InvoiceManagmentDropdown>
+                    <DropdownList Label={`Repeat: ${invoiceRepeat}`} styling={"btn btn-secondary dropdown-toggle"}>
+                        <DropdownItem event={() => setInvoiceRepeat("Niet")} value={"Niet"}/>
+                        <DropdownItem event={() => setInvoiceRepeat("wekelijks")} value={"wekelijks"}/>
+                        <DropdownItem event={() => setInvoiceRepeat("maandelijks")} value={"maandelijks"}/>
+                        <DropdownItem event={() => setInvoiceRepeat("3 maandelijks")} value={"3 maandelijks"}/>
+                        <DropdownItem event={() => setInvoiceRepeat("6 maandelijks")} value={"6 maandelijks"}/>
+                        <DropdownItem event={() => setInvoiceRepeat("jaarlijks")} value={"jaarlijks"}/>
+                    </DropdownList>
                 </div>
                 <div>
                     <label for="Status">Status:</label>
-                    <InvoiceManagmentDropdown Label={`Status: ${invoiceStatus}`}>
-                        <InvoiceManagmentDropdownItem event={() => setInvoiceStatus("Niet betaald")} value={"Niet betaald"}/>
-                        <InvoiceManagmentDropdownItem event={() => setInvoiceStatus("betaaldt")} value={"betaald"}/>
-                        <InvoiceManagmentDropdownItem event={() => setInvoiceStatus("geanulleerd")} value={"geanulleerd"}/>
-                        <InvoiceManagmentDropdownItem event={() => setInvoiceStatus("Geld terug")} value={"Geld terug"}/>
-                    </InvoiceManagmentDropdown>
+                    <DropdownList Label={`Status: ${invoiceStatus}`} styling={"btn btn-secondary dropdown-toggle"}>
+                        <DropdownItem event={() => setInvoiceStatus("Niet betaald")} value={"Niet betaald"}/>
+                        <DropdownItem event={() => setInvoiceStatus("betaaldt")} value={"betaald"}/>
+                        <DropdownItem event={() => setInvoiceStatus("geanulleerd")} value={"geanulleerd"}/>
+                        <DropdownItem event={() => setInvoiceStatus("Geld terug")} value={"Geld terug"}/>
+                    </DropdownList>
                 </div>
                 <button onClick={CreateInvoice}>Maak Invoice</button>
             </div>

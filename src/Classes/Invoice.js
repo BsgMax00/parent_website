@@ -1,5 +1,6 @@
 class Invoice {
-    constructor(InvoiceId, InvoiceName, InvoiceDescription = null, InvoicePrice, InvoiceDate, InvoiceNextDate = null, InvoiceRepeat, InvoiceStatus, NextInvoice = null){
+    constructor(id, InvoiceId, InvoiceName, InvoiceDescription = null, InvoicePrice, InvoiceDate, InvoiceNextDate = null, InvoiceRepeat, InvoiceStatus, NextInvoice = null){
+        this.id = id;
         this.InvoiceId = InvoiceId;
         this.InvoiceName = InvoiceName;
         this.InvoiceDescription = InvoiceDescription;

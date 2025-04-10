@@ -1,4 +1,4 @@
-import { serviceGetInvoiceData, servicePostInvoiceData } from "../Services/InvoiceService";
+import { serviceGetInvoiceData, servicePostInvoiceData, serviceDeleteInvoiceData } from "../Services/InvoiceService";
 import { createContext, useEffect, useState } from "react";
 
 export const InvoiceContext = createContext();
@@ -26,13 +26,18 @@ export const InvoiceProvider = ({ children }) => {
         await getInvoiceData();
     }
 
+    const deleteInvoiceData = async ( invoiceId ) => {
+        await serviceDeleteInvoiceData(invoiceId);
+        await getInvoiceData();
+    }
+
     useEffect(() => {
         getInvoiceData();
         // eslint-disable-next-line
     }, [])
 
     return (
-        <InvoiceContext.Provider value={{ invoiceData, setInvoiceData, arrayIndex, setArrayIndex, postInvoiceData, getLastInvoiceIndex }}>
+        <InvoiceContext.Provider value={{ invoiceData, setInvoiceData, arrayIndex, setArrayIndex, postInvoiceData, deleteInvoiceData, getLastInvoiceIndex }}>
             {children}
         </InvoiceContext.Provider>
     )
