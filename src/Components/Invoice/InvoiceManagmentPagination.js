@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { InvoiceContext } from "../../Contexts/InvoiceContext";
 
 const InvoiceManagmentPagination = ({ chunkedInvoiceData }) => {
@@ -28,10 +28,6 @@ const InvoiceManagmentPagination = ({ chunkedInvoiceData }) => {
     }
 
     const tableIndeces = getMiddleTableIndex();
-
-    useEffect(() => {
-        console.log(arrayIndex)
-    }, [arrayIndex])
 
     return (
         <>
