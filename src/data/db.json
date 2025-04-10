@@ -47,18 +47,6 @@
       "InvoiceRepeat": "Niet",
       "InvoiceStatus": "Niet betaald",
       "NextInvoice": null
-    },
-    {
-      "id": "5",
-      "InvoiceId": 5,
-      "InvoiceName": "test aanmaken",
-      "InvoiceDescription": "mdfqs",
-      "InvoicePrice": 45,
-      "InvoiceDate": "2025-04-10",
-      "InvoiceNextDate": null,
-      "InvoiceRepeat": "Niet",
-      "InvoiceStatus": "Niet betaald",
-      "NextInvoice": null
     }
   ]
 }

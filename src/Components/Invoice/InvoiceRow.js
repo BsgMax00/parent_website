@@ -5,9 +5,11 @@ import { MoreHoriz } from "@mui/icons-material";
 
 import DropdownList from "../dropdown/DropdownList";
 import DropdownItem from "../dropdown/DropdownItem";
+import { useNavigate } from "react-router-dom";
 
 const InvoiceRow = ({ Invoice }) => {
     const { deleteInvoiceData } = useContext(InvoiceContext);
+    const navigate = useNavigate();
 
     const ellipsisCell = {
         display: "block",
@@ -27,8 +29,8 @@ const InvoiceRow = ({ Invoice }) => {
                 <td><div style={ellipsisCell}>{Invoice.InvoiceStatus}</div></td>
                 <td className="text-center">
                     <DropdownList Label={<MoreHoriz/>} styling={"btn border"}>
-                        <DropdownItem event={() => {}} value={"Bewerken"}/>
-                        <DropdownItem event={() => {deleteInvoiceData(Invoice.InvoiceId)}} value={"Verwijderen"}/>
+                        <DropdownItem event={() => {navigate(`/facturen/aanmaken/${Invoice.id}`)}} value={"Bewerken"}/>
+                        <DropdownItem event={() => {deleteInvoiceData(Invoice.id)}} value={"Verwijderen"}/>
                     </DropdownList>
                 </td>
             </tr>
