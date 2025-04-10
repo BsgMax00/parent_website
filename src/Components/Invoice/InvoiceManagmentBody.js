@@ -46,7 +46,7 @@ const InvoiceManagmentBody = () => {
             }
             if (sortingOption.key === "status"){
                 if (sortingOption.direction === "asc"){ return a.InvoiceStatus.localeCompare(b.InvoiceStatus, undefined, { numeric: true, sensitivity: "base" }); }
-                else { return b.InvoiceName.localeCompare(b.InvoiceStatus, undefined, { numeric: true, sensitivity: "base" }); }
+                else { return b.InvoiceName.localeCompare(a.InvoiceStatus, undefined, { numeric: true, sensitivity: "base" }); }
             }
             return 0;
         });
