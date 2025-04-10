@@ -1,4 +1,4 @@
-import { serviceGetInvoiceData, servicePostInvoiceData, serviceDeleteInvoiceData } from "../Services/InvoiceService";
+import { serviceGetInvoiceData, servicePostInvoiceData, serviceDeleteInvoiceData, servicePutInvoiceData } from "../Services/InvoiceService";
 import { createContext, useEffect, useState } from "react";
 
 export const InvoiceContext = createContext();
@@ -6,6 +6,7 @@ export const InvoiceContext = createContext();
 export const InvoiceProvider = ({ children }) => {
     const [ invoiceData, setInvoiceData ] = useState([]);
     const [ arrayIndex, setArrayIndex ] = useState(0);
+    const [ isEditing, setIsEditing ] = useState(false);
 
     const getLastInvoiceIndex = () => {
         const length = invoiceData.length;
@@ -21,13 +22,19 @@ export const InvoiceProvider = ({ children }) => {
         setInvoiceData(InvoiceData);
     }
 
+    const deleteInvoiceData = async ( invoiceId ) => {
+        await serviceDeleteInvoiceData(invoiceId);
+        await getInvoiceData();
+    }
+
     const postInvoiceData = async ( newInvoice ) => {
         await servicePostInvoiceData(newInvoice);
         await getInvoiceData();
     }
 
-    const deleteInvoiceData = async ( invoiceId ) => {
-        await serviceDeleteInvoiceData(invoiceId);
+    const putInvoiceData = async ( editedInvoice ) => {
+        console.log(editedInvoice)
+        await servicePutInvoiceData(editedInvoice);
         await getInvoiceData();
     }
 
@@ -37,7 +44,7 @@ export const InvoiceProvider = ({ children }) => {
     }, [])
 
     return (
-        <InvoiceContext.Provider value={{ invoiceData, setInvoiceData, arrayIndex, setArrayIndex, postInvoiceData, deleteInvoiceData, getLastInvoiceIndex }}>
+        <InvoiceContext.Provider value={{ invoiceData, setInvoiceData, arrayIndex, setArrayIndex, isEditing, setIsEditing, postInvoiceData, deleteInvoiceData, putInvoiceData, getLastInvoiceIndex }}>
             {children}
         </InvoiceContext.Provider>
     )

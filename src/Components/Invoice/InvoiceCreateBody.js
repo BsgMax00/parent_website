@@ -1,23 +1,42 @@
-import { useContext, useState } from "react";
+import { useEffect,useContext, useState } from "react";
 import { InvoiceContext } from "../../Contexts/InvoiceContext";
 
 import Invoice from "../../Classes/Invoice";
 import DropdownList from "../dropdown/DropdownList";
 import DropdownItem from "../dropdown/DropdownItem";
+import { useNavigate } from "react-router-dom";
 
-const InvoiceCreateBody = () => {
-    const { postInvoiceData, getLastInvoiceIndex } = useContext(InvoiceContext);
+const InvoiceCreateBody = ({ invoice = null }) => {
+    const { isEditing, postInvoiceData, putInvoiceData, getLastInvoiceIndex } = useContext(InvoiceContext);
     const [ invoiceName, setInvoiceName ] = useState("");
     const [ invoiceDescription, setInvoiceDescription ] = useState(null) 
     const [ invoicePrice, setInvoicePrice ] = useState("");
     const [ invoiceDate, setInvoiceDate ] = useState(new Date().toISOString().split("T")[0]);
     const [ invoiceRepeat, setInvoiceRepeat ] = useState("Niet");
     const [ invoiceStatus, setInvoiceStatus ] = useState("Niet betaald");
+    const navigate = useNavigate();
     
     const CreateInvoice = () => {
         const data = new Invoice(String(getLastInvoiceIndex() + 1), Number(getLastInvoiceIndex()) + 1, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, null, invoiceRepeat, invoiceStatus, null);
         postInvoiceData(data);
     }
+
+    const EditInvoice = () => {
+        const data = new Invoice(invoice.id, invoice.InvoiceId, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, invoice.InvoiceNextDate, invoiceRepeat, invoiceStatus, invoice.NextInvoice);
+        putInvoiceData(data);
+    }
+
+    useEffect(() => {
+        if (isEditing){
+            setInvoiceName(invoice.InvoiceName);
+            setInvoiceDescription(invoice.InvoiceDescription);
+            setInvoicePrice(invoice.InvoicePrice);
+            setInvoiceDate(invoice.InvoiceDate);
+            setInvoiceRepeat(invoice.InvoiceRepeat);
+            setInvoiceStatus(invoice.InvoiceStatus)
+        }
+        // eslint-disable-next-line
+    }, [invoice])
 
     return (
         <>
@@ -58,7 +77,11 @@ const InvoiceCreateBody = () => {
                         <DropdownItem event={() => setInvoiceStatus("Geld terug")} value={"Geld terug"}/>
                     </DropdownList>
                 </div>
-                <button onClick={CreateInvoice}>Maak Invoice</button>
+                {isEditing === true ? (
+                    <button onClick={() => {EditInvoice(); navigate("/facturen")}}>Edit Invoice</button>
+                ) : (
+                    <button onClick={() => {CreateInvoice(); navigate("/facturen")}}>Maak Invoice</button>
+                )}
             </div>
         </>
     );

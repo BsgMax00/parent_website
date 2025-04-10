@@ -12,6 +12,7 @@ function App() {
         <Route path="/" element={<Layout/>}>
           <Route index element={<Dashboard/>}/>
           <Route path="/facturen" element={<InvoiceManagment/>}/>
+          <Route path="/facturen/aanmaken/:InvoiceId" element={<InvoiceCreate/>}/>
           <Route path="/facturen/aanmaken" element={<InvoiceCreate/>}/>
         </Route>
       </Routes>

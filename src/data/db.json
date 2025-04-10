@@ -3,7 +3,7 @@
     {
       "id": "1",
       "InvoiceId": 1,
-      "InvoiceName": "Test 2",
+      "InvoiceName": "Test edit again",
       "InvoiceDescription": "description, I am watching komi-san (the show XD)right now",
       "InvoicePrice": 51.75,
       "InvoiceDate": "2025-03-31",
@@ -43,6 +43,18 @@
       "InvoiceDescription": "dfqs",
       "InvoicePrice": 124,
       "InvoiceDate": "1986-01-31",
+      "InvoiceNextDate": null,
+      "InvoiceRepeat": "Niet",
+      "InvoiceStatus": "Niet betaald",
+      "NextInvoice": null
+    },
+    {
+      "id": "5",
+      "InvoiceId": 5,
+      "InvoiceName": "test aanmaken",
+      "InvoiceDescription": "mdfqs",
+      "InvoicePrice": 45,
+      "InvoiceDate": "2025-04-10",
       "InvoiceNextDate": null,
       "InvoiceRepeat": "Niet",
       "InvoiceStatus": "Niet betaald",

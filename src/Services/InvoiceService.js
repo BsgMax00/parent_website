@@ -14,13 +14,18 @@ export const serviceGetInvoiceData = async () => {
     return convertedInvoiceData;
 }
 
+export const serviceDeleteInvoiceData = async ( invoiceID ) => {
+    await serviceFetch("DELETE", `${baseUrl}/Invoice/${invoiceID}`);
+}
+
 export const servicePostInvoiceData = async ( invoice ) => {
     const body = JSON.stringify(invoice);
     await serviceFetch("POST", `${baseUrl}/Invoice`, body);
 }
 
-export const serviceDeleteInvoiceData = async ( invoiceID ) => {
-    await serviceFetch("DELETE", `${baseUrl}/Invoice/${invoiceID}`);
+export const servicePutInvoiceData = async (invoice) => {
+    const body = JSON.stringify(invoice);
+    await serviceFetch("PUT", `${baseUrl}/Invoice/${invoice.id}`, body)
 }
 
 const FormatDate = ( invoiceDate ) => {
