@@ -8,6 +8,7 @@ const SidebarBody = () => {
                 <hr/>
                 <ul className="nav flex-column">
                     <SidebarItem item="" text="dashboard"/>
+                    <SidebarItem item="kalender" text="Kalender"/>
                     <SidebarItem item="facturen" text="Facturen"/>
                 </ul>
             </div>

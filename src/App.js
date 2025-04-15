@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Dashboard from './Pages/Dashboard';
-import InvoiceManagment from './Pages/InvoiceManagment';
 import Layout from './Components/Layout';
+import Dashboard from './Pages/Dashboard';
+import Calender from './Pages/Calender';
+import InvoiceManagment from './Pages/InvoiceManagment';
+import InvoiceDetail from './Pages/InvoiceDetail';
 import InvoiceCreate from './Pages/InvoiceCreate';
 
 function App() {
@@ -11,7 +13,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route index element={<Dashboard/>}/>
+          <Route path="/kalender" element={<Calender/>}/>
           <Route path="/facturen" element={<InvoiceManagment/>}/>
+          <Route path="/facturen/:InvoiceId" element={<InvoiceDetail/>}/>
           <Route path="/facturen/aanmaken/:InvoiceId" element={<InvoiceCreate/>}/>
           <Route path="/facturen/aanmaken" element={<InvoiceCreate/>}/>
         </Route>

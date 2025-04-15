@@ -1,10 +1,6 @@
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import { useContext } from "react";
-import { InvoiceContext } from "../../Contexts/InvoiceContext";
 
-const InvoiceManagmentPagination = ({ chunkedInvoiceData }) => {
-    const { arrayIndex, setArrayIndex } = useContext(InvoiceContext);
-
+const Pagination = ({ data, arrayIndex, setArrayIndex = () => {} }) => {
     const getMiddleTableIndex = () => {
         const indeces = []
 
@@ -17,10 +13,10 @@ const InvoiceManagmentPagination = ({ chunkedInvoiceData }) => {
 
         indeces.push(arrayIndex)
 
-        if (arrayIndex + 1 <= chunkedInvoiceData.length - 1){
+        if (arrayIndex + 1 <= data.length - 1){
             indeces.push(arrayIndex + 1)
         }
-        if (arrayIndex + 2 <= chunkedInvoiceData.length - 1){
+        if (arrayIndex + 2 <= data.length - 1){
             indeces.push(arrayIndex + 2)
         }
 
@@ -31,7 +27,7 @@ const InvoiceManagmentPagination = ({ chunkedInvoiceData }) => {
 
     return (
         <>
-            <div className="d-flex justify-content-center mt-2">
+            <div className="d-flex justify-content-center my-3">
                 <div className="btn-group">
                     {arrayIndex !== 0 && (
                         <button className="fw-bold px-3 py-2 btn btn-outline-secondary" style={{width:"54px", height:"54px"}} onClick={() => setArrayIndex(arrayIndex - 1)}><ChevronLeft/></button>
@@ -45,13 +41,13 @@ const InvoiceManagmentPagination = ({ chunkedInvoiceData }) => {
                     {tableIndeces.map((indece, index) => (
                         <button key={index} className={`fw-bold px-3 py-2 btn ${arrayIndex === indece ? "btn-primary" : "btn-outline-secondary"}`} style={{width:"54px", height:"54px"}} onClick={() => setArrayIndex(indece)}>{indece + 1}</button>
                     ))}
-                    {chunkedInvoiceData.length >= arrayIndex + 5 && (
+                    {data.length >= arrayIndex + 5 && (
                         <button className="fw-bold px-3 py-2 btn btn-outline-secondary" style={{width:"54px", height:"54px"}}>...</button>
                     )}
-                    {chunkedInvoiceData.length >= arrayIndex + 4 && (
-                        <button className="fw-bold px-3 py-2 btn btn-outline-secondary" style={{width:"54px", height:"54px"}} onClick={() => setArrayIndex(chunkedInvoiceData.length - 1)}>{chunkedInvoiceData.length}</button>
+                    {data.length >= arrayIndex + 4 && (
+                        <button className="fw-bold px-3 py-2 btn btn-outline-secondary" style={{width:"54px", height:"54px"}} onClick={() => setArrayIndex(data.length - 1)}>{data.length}</button>
                     )}
-                    {arrayIndex !== chunkedInvoiceData.length - 1 && (
+                    {arrayIndex !== data.length - 1 && (
                         <button className="fw-bold px-3 py-2 btn btn-outline-secondary" style={{width:"54px", height:"54px"}} onClick={() => setArrayIndex(arrayIndex + 1)}><ChevronRight/></button>
                     )}
                 </div>
@@ -60,4 +56,4 @@ const InvoiceManagmentPagination = ({ chunkedInvoiceData }) => {
     );
 };
 
-export default InvoiceManagmentPagination;
+export default Pagination;

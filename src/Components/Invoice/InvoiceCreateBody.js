@@ -40,48 +40,51 @@ const InvoiceCreateBody = ({ invoice = null }) => {
 
     return (
         <>
-            <div>
-                <div>
-                    <label for="Name">Naam: </label>
-                    <input required id="Name" name="Name" value={invoiceName} onChange={(e) => setInvoiceName(e.target.value)}/>
+            <div className="card rounded m-2">
+                <div className="card-body shadow-lg">
+                    <div className="mb-3">
+                        <label htmlFor="Name">Naam: </label>
+                        <input required id="Name" name="Name" type="text" className="form-control" value={invoiceName} onChange={(e) => setInvoiceName(e.target.value)}/>
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="Description">Descriptie: </label>
+                        <input id="Description" name="Description" type="text" className="form-control" value={invoiceDescription} onChange={(e) => setInvoiceDescription(e.target.value)}/>
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="Price">Prijs: </label>
+                        <input required id="Price" name="Price" type="number" className="form-control" value={invoicePrice} onChange={(e) => setInvoicePrice(e.target.value)}/>
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="Date">Datum: </label>
+                        <input id="Date" name="Date" type="date" className="form-control" value={invoiceDate} onChange={(e) => setInvoiceDate(e.target.value)}/>
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="Repeat">Repeat:</label>
+                        <DropdownList Label={`Repeat: ${invoiceRepeat}`} styling={"btn btn-secondary dropdown-toggle"}>
+                            <DropdownItem event={() => setInvoiceRepeat("Niet")} value={"Niet"}/>
+                            <DropdownItem event={() => setInvoiceRepeat("wekelijks")} value={"wekelijks"}/>
+                            <DropdownItem event={() => setInvoiceRepeat("maandelijks")} value={"maandelijks"}/>
+                            <DropdownItem event={() => setInvoiceRepeat("3 maandelijks")} value={"3 maandelijks"}/>
+                            <DropdownItem event={() => setInvoiceRepeat("6 maandelijks")} value={"6 maandelijks"}/>
+                            <DropdownItem event={() => setInvoiceRepeat("jaarlijks")} value={"jaarlijks"}/>
+                        </DropdownList>
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="Status">Status:</label>
+                        <DropdownList Label={`Status: ${invoiceStatus}`} styling={"btn btn-secondary dropdown-toggle"}>
+                            <DropdownItem event={() => setInvoiceStatus("Niet betaald")} value={"Niet betaald"}/>
+                            <DropdownItem event={() => setInvoiceStatus("betaaldt")} value={"betaald"}/>
+                            <DropdownItem event={() => setInvoiceStatus("geanulleerd")} value={"geanulleerd"}/>
+                            <DropdownItem event={() => setInvoiceStatus("Geld terug")} value={"Geld terug"}/>
+                            <DropdownItem event={() => setInvoiceStatus("Toekomstige betaling")} value={"Toekomstige betaling"}/>
+                        </DropdownList>
+                    </div>
+                    {isEditing === true ? (
+                        <button type="button" className="btn btn-primary" onClick={() => {EditInvoice(); navigate("/facturen")}}>Edit Invoice</button>
+                    ) : (
+                        <button type="button" className="btn btn-primary" onClick={() => {CreateInvoice(); navigate("/facturen")}}>Maak Invoice</button>
+                    )}
                 </div>
-                <div>
-                    <label for="Description">Descriptie: </label>
-                    <input id="Description" name="Description" value={invoiceDescription} onChange={(e) => setInvoiceDescription(e.target.value)}/>
-                </div>
-                <div>
-                    <label for="Price">Prijs: </label>
-                    <input required id="Price" name="Price" type="number" value={invoicePrice} onChange={(e) => setInvoicePrice(e.target.value)}/>
-                </div>
-                <div>
-                    <label for="Date">Datum: </label>
-                    <input id="Date" name="Date" type="date" value={invoiceDate} onChange={(e) => setInvoiceDate(e.target.value)}/>
-                </div>
-                <div>
-                    <label for="Repeat">Repeat:</label>
-                    <DropdownList Label={`Repeat: ${invoiceRepeat}`} styling={"btn btn-secondary dropdown-toggle"}>
-                        <DropdownItem event={() => setInvoiceRepeat("Niet")} value={"Niet"}/>
-                        <DropdownItem event={() => setInvoiceRepeat("wekelijks")} value={"wekelijks"}/>
-                        <DropdownItem event={() => setInvoiceRepeat("maandelijks")} value={"maandelijks"}/>
-                        <DropdownItem event={() => setInvoiceRepeat("3 maandelijks")} value={"3 maandelijks"}/>
-                        <DropdownItem event={() => setInvoiceRepeat("6 maandelijks")} value={"6 maandelijks"}/>
-                        <DropdownItem event={() => setInvoiceRepeat("jaarlijks")} value={"jaarlijks"}/>
-                    </DropdownList>
-                </div>
-                <div>
-                    <label for="Status">Status:</label>
-                    <DropdownList Label={`Status: ${invoiceStatus}`} styling={"btn btn-secondary dropdown-toggle"}>
-                        <DropdownItem event={() => setInvoiceStatus("Niet betaald")} value={"Niet betaald"}/>
-                        <DropdownItem event={() => setInvoiceStatus("betaaldt")} value={"betaald"}/>
-                        <DropdownItem event={() => setInvoiceStatus("geanulleerd")} value={"geanulleerd"}/>
-                        <DropdownItem event={() => setInvoiceStatus("Geld terug")} value={"Geld terug"}/>
-                    </DropdownList>
-                </div>
-                {isEditing === true ? (
-                    <button onClick={() => {EditInvoice(); navigate("/facturen")}}>Edit Invoice</button>
-                ) : (
-                    <button onClick={() => {CreateInvoice(); navigate("/facturen")}}>Maak Invoice</button>
-                )}
             </div>
         </>
     );

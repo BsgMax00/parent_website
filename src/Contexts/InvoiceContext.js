@@ -33,7 +33,6 @@ export const InvoiceProvider = ({ children }) => {
     }
 
     const putInvoiceData = async ( editedInvoice ) => {
-        console.log(editedInvoice)
         await servicePutInvoiceData(editedInvoice);
         await getInvoiceData();
     }
