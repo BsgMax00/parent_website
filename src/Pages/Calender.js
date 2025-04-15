@@ -1,7 +1,9 @@
+import CalenderBody from "../Components/Calender/CalenderBody";
+
 const Calender = () => {
     return (
         <>
-            <p>T</p>
+            <CalenderBody/>
         </>
     )
 }

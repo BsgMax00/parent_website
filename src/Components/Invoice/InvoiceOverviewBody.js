@@ -4,7 +4,7 @@ import { InvoiceContext } from "../../Contexts/InvoiceContext";
 import InvoiceRow from "../Table/Rows/InvoiceRow";
 import Table from "../Table/Table";
 
-const InvoiceManagmentBody = () => {
+const InvoiceOverviewBody = () => {
     const [ chunkedInvoiceData, setChunkedInvoiceData ] = useState([]);
     const [ searchSorting, setSearchSorting ] = useState(null);
     const [ sortingOption, setSortingOption ] = useState({key: null, direction: "asc"});
@@ -97,4 +97,4 @@ const InvoiceManagmentBody = () => {
     );
 };
 
-export default InvoiceManagmentBody;
+export default InvoiceOverviewBody;

@@ -40,7 +40,7 @@ const InvoiceCreateBody = ({ invoice = null }) => {
 
     return (
         <>
-            <div className="card rounded m-2">
+            <div className="card rounded mt-0 m-2">
                 <div className="card-body shadow-lg">
                     <div className="mb-3">
                         <label htmlFor="Name">Naam: </label>
@@ -73,7 +73,7 @@ const InvoiceCreateBody = ({ invoice = null }) => {
                         <label htmlFor="Status">Status:</label>
                         <DropdownList Label={`Status: ${invoiceStatus}`} styling={"btn btn-secondary dropdown-toggle"}>
                             <DropdownItem event={() => setInvoiceStatus("Niet betaald")} value={"Niet betaald"}/>
-                            <DropdownItem event={() => setInvoiceStatus("betaaldt")} value={"betaald"}/>
+                            <DropdownItem event={() => setInvoiceStatus("betaald")} value={"betaald"}/>
                             <DropdownItem event={() => setInvoiceStatus("geanulleerd")} value={"geanulleerd"}/>
                             <DropdownItem event={() => setInvoiceStatus("Geld terug")} value={"Geld terug"}/>
                             <DropdownItem event={() => setInvoiceStatus("Toekomstige betaling")} value={"Toekomstige betaling"}/>

@@ -3,7 +3,7 @@ const InvoiceDetailBody = ({ invoice }) => {
 
     return (
         <>
-            <div className="card rounded m-2">
+            <div className="card rounded mt-0 m-2">
                 <div className="card-body shadow-lg">
                     <div className="d-flex mb-3">
                         <label htmlFor="Name" className="me-2 mb-0 fw-semibold">Naam: </label>

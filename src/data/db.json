@@ -21,7 +21,7 @@
       "InvoiceDate": "2023-01-31",
       "InvoiceNextDate": null,
       "InvoiceRepeat": "Niet",
-      "InvoiceStatus": "betaaldt",
+      "InvoiceStatus": "betaald",
       "NextInvoice": null
     },
     {
@@ -46,6 +46,18 @@
       "InvoiceNextDate": null,
       "InvoiceRepeat": "Niet",
       "InvoiceStatus": "Niet betaald",
+      "NextInvoice": null
+    },
+    {
+      "id": "5",
+      "InvoiceId": 5,
+      "InvoiceName": "calendar test",
+      "InvoiceDescription": "test",
+      "InvoicePrice": 12.45,
+      "InvoiceDate": "2025-04-16",
+      "InvoiceNextDate": null,
+      "InvoiceRepeat": "Niet",
+      "InvoiceStatus": "betaald",
       "NextInvoice": null
     }
   ]
