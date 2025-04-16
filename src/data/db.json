@@ -7,10 +7,9 @@
       "InvoiceDescription": "description, I am watching komi-san (the show XD)right now",
       "InvoicePrice": 51.75,
       "InvoiceDate": "2025-03-31",
-      "InvoiceNextDate": null,
       "InvoiceRepeat": "jaarlijks",
       "InvoiceStatus": "Toekomstige betaling",
-      "NextInvoice": null
+      "GroupId": null
     },
     {
       "id": "2",
@@ -19,10 +18,9 @@
       "InvoiceDescription": "dfqs",
       "InvoicePrice": 124,
       "InvoiceDate": "2023-01-31",
-      "InvoiceNextDate": null,
       "InvoiceRepeat": "Niet",
       "InvoiceStatus": "betaald",
-      "NextInvoice": null
+      "GroupId": null
     },
     {
       "id": "3",
@@ -31,10 +29,9 @@
       "InvoiceDescription": "dfqs",
       "InvoicePrice": 124,
       "InvoiceDate": "2096-01-31",
-      "InvoiceNextDate": null,
       "InvoiceRepeat": "Niet",
       "InvoiceStatus": "Niet betaald",
-      "NextInvoice": null
+      "GroupId": null
     },
     {
       "id": "4",
@@ -43,10 +40,9 @@
       "InvoiceDescription": "dfqs",
       "InvoicePrice": 124,
       "InvoiceDate": "1986-01-31",
-      "InvoiceNextDate": null,
       "InvoiceRepeat": "Niet",
       "InvoiceStatus": "Niet betaald",
-      "NextInvoice": null
+      "GroupId": null
     },
     {
       "id": "5",
@@ -55,10 +51,42 @@
       "InvoiceDescription": "test",
       "InvoicePrice": 12.45,
       "InvoiceDate": "2025-04-16",
-      "InvoiceNextDate": null,
       "InvoiceRepeat": "Niet",
       "InvoiceStatus": "betaald",
-      "NextInvoice": null
+      "GroupId": null
+    },
+    {
+      "id": "6",
+      "InvoiceId": 6,
+      "InvoiceName": "testing long titles for the calendars something something long text",
+      "InvoiceDescription": "test 1",
+      "InvoicePrice": 12,
+      "InvoiceDate": "2025-04-19",
+      "InvoiceRepeat": "Niet",
+      "InvoiceStatus": "Niet betaald",
+      "GroupId": "group1"
+    },
+    {
+      "id": "7",
+      "InvoiceId": 7,
+      "InvoiceName": "testing long titles for the calendars something something long text",
+      "InvoiceDescription": "test 2",
+      "InvoicePrice": 12,
+      "InvoiceDate": "2025-05-19",
+      "InvoiceRepeat": "Niet",
+      "InvoiceStatus": "Niet betaald",
+      "GroupId": "group1"
+    },
+    {
+      "id": "8",
+      "InvoiceId": 8,
+      "InvoiceName": "testing long titles for the calendars something something long text",
+      "InvoiceDescription": "test 3",
+      "InvoicePrice": 12,
+      "InvoiceDate": "2025-06-19",
+      "InvoiceRepeat": "Niet",
+      "InvoiceStatus": "Niet betaald",
+      "GroupId": "group1"
     }
   ]
 }

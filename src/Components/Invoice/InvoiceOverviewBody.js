@@ -8,7 +8,8 @@ const InvoiceOverviewBody = () => {
     const [ chunkedInvoiceData, setChunkedInvoiceData ] = useState([]);
     const [ searchSorting, setSearchSorting ] = useState(null);
     const [ sortingOption, setSortingOption ] = useState({key: null, direction: "asc"});
-    const { invoiceData, arrayIndex, setArrayIndex } = useContext(InvoiceContext);
+    const [ arrayIndex, setArrayIndex ] = useState(0)
+    const { invoiceData } = useContext(InvoiceContext);
     const tableHeaders = [
         { label: "Naam", key: "name" },
         { label: "Datum", key: "date" },
@@ -26,9 +27,9 @@ const InvoiceOverviewBody = () => {
         setSortingOption({ key, direction })
     }
 
-    const chunkInvoiceData = ( invoices ) => {
+    const chunkInvoiceData = () => {
         const InvoiceDataChunked = [];
-        let data = [...invoices].sort((a, b) => {
+        let data = [...invoiceData].sort((a, b) => {
             if (sortingOption.key === "name") {
                 if (sortingOption.direction === "asc"){ return a.InvoiceName.localeCompare(b.InvoiceName, undefined, { numeric: true, sensitivity: "base" }); }
                 else{ return b.InvoiceName.localeCompare(a.InvoiceName, undefined, { numeric: true, sensitivity: "base" }); }
@@ -64,7 +65,7 @@ const InvoiceOverviewBody = () => {
     }
 
     useEffect(() => {
-        setChunkedInvoiceData(chunkInvoiceData(invoiceData));
+        setChunkedInvoiceData(chunkInvoiceData());
         setArrayIndex(0);
         // eslint-disable-next-line
     }, [invoiceData, sortingOption, searchSorting])

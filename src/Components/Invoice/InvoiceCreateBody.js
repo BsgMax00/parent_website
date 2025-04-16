@@ -17,12 +17,12 @@ const InvoiceCreateBody = ({ invoice = null }) => {
     const navigate = useNavigate();
     
     const CreateInvoice = () => {
-        const data = new Invoice(String(getLastInvoiceIndex() + 1), Number(getLastInvoiceIndex()) + 1, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, null, invoiceRepeat, invoiceStatus, null);
+        const data = new Invoice(String(getLastInvoiceIndex() + 1), Number(getLastInvoiceIndex()) + 1, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, invoiceRepeat, invoiceStatus, null);
         postInvoiceData(data);
     }
 
     const EditInvoice = () => {
-        const data = new Invoice(invoice.id, invoice.InvoiceId, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, invoice.InvoiceNextDate, invoiceRepeat, invoiceStatus, invoice.NextInvoice);
+        const data = new Invoice(invoice.id, invoice.InvoiceId, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, invoiceRepeat, invoiceStatus, invoice.GroupId);
         putInvoiceData(data);
     }
 

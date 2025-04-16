@@ -13,7 +13,7 @@ const InvoiceDetail = () => {
         const invoice = invoiceData.find(invoice => invoice.InvoiceId === Number(InvoiceId));
         setInvoice(invoice);
         // eslint-disable-next-line
-    }, [invoiceData])
+    }, [InvoiceId, invoiceData])
 
     return (
         <>

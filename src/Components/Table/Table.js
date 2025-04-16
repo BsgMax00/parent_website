@@ -4,8 +4,8 @@ import Pagination from "./Pagination";
 import { Search } from "@mui/icons-material";
 
 const Table = ({
-    search = () => {},
-    createButton = () => null,
+    search = null,
+    createButton = null,
     tableHeaders = [],
     tableData = [],
     handleSort = () => {},
@@ -21,15 +21,25 @@ const Table = ({
 
     return (
         <>
-            <div className="d-flex justify-content-between m-3">
-                <div className="input-group" style={{ width: "30%" }}>
-                    <input type="text" placeholder="Search..." className="form-control" onChange={(e) => setSearchOption(e.target.value)}/>
-                    <button type="button" className="btn btn-primary" onClick={() => search(searchOption)}>
-                        <Search/>
-                    </button>
+            {typeof search === "function" ? (
+                <div className="d-flex justify-content-between m-3">
+                    <div className="input-group" style={{ width: "30%" }}>
+                        <input type="text" placeholder="Search..." className="form-control" onChange={(e) => setSearchOption(e.target.value)}/>
+                        <button type="button" className="btn btn-primary" onClick={() => search(searchOption)}>
+                            <Search/>
+                        </button>
+                    </div>
+                    {typeof createButton === "function" && (
+                        {createButton}
+                    )}
                 </div>
-                {createButton}
-            </div>
+            ) : (
+                typeof createButton === "function" && (
+                    <div className="d-flex justify-content-end m-3">
+                        {createButton}
+                    </div>
+                )
+            )}
             <div className="card rounded m-3">
                 <div className="card-body p-0">
                     <div className="table-responsive table-card">
@@ -46,7 +56,7 @@ const Table = ({
                             </thead>
                             <tbody>
                                 {Array.isArray(tableData) ? (
-                                    tableData.map((Invoice, index) => renderRow(Invoice, index))
+                                    tableData.map((data, index) => renderRow(data, index))
                                 ) : (
                                     <tr>
                                         <td colSpan={(includeActionColumn ? tableHeaders.length : tableHeaders.length - 1)} style={{ textAlign: 'center' }}>
@@ -59,7 +69,9 @@ const Table = ({
                     </div>
                 </div>
             </div>
-            <Pagination data={paginationData} arrayIndex={arrayIndex} setArrayIndex={setArrayIndex}/>
+            {paginationData.length > 1 && (
+                <Pagination data={paginationData} arrayIndex={arrayIndex} setArrayIndex={setArrayIndex}/>
+            )}
         </>
     )
 }

@@ -8,7 +8,7 @@ export const serviceGetInvoiceData = async () => {
     const data = await serviceFetch("GET", `${baseUrl}/Invoice`);
 
     const convertedInvoiceData = data.map(data =>
-        new Invoice(data.id, data.InvoiceId, data.InvoiceName, data.InvoiceDescription, data.InvoicePrice, FormatDate(data.InvoiceDate), data.InvoiceNextDate, data.InvoiceRepeat, data.InvoiceStatus, data.NextInvoice)
+        new Invoice(data.id, data.InvoiceId, data.InvoiceName, data.InvoiceDescription, data.InvoicePrice, FormatDate(data.InvoiceDate), data.InvoiceRepeat, data.InvoiceStatus, data.GroupId)
     )
 
     return convertedInvoiceData;

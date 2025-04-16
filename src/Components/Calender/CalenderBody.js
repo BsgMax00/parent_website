@@ -1,10 +1,9 @@
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
-import "moment/locale/nl-be"
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useContext } from 'react';
+import "moment/locale/nl-be";
+import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { InvoiceContext } from '../../Contexts/InvoiceContext';
 import CalendarInvoice from '../../Classes/CalendarInvoice';
 
@@ -14,6 +13,7 @@ const localizer = momentLocalizer(moment)
 const CalenderBody = () => {
     const { invoiceData } = useContext(InvoiceContext)
     const [ calendarData, setCalendarData ] = useState([]);
+    const navigate = useNavigate();
 
     const convertToCalendarData = () => {
         const data = [...invoiceData];
@@ -24,6 +24,7 @@ const CalenderBody = () => {
 
     useEffect(() => {
         setCalendarData(convertToCalendarData())
+        // eslint-disable-next-line
     }, [invoiceData])
 
     return (
@@ -31,13 +32,11 @@ const CalenderBody = () => {
             <div className="card rounded mt-0 m-2 h-100">
                 <div className="card-body shadow-lg">
                     <Calendar
-                        defaultDate={new Date()}
                         localizer={localizer}
                         events={calendarData}
-                        startAccessor="start"
-                        endAccessor="end"
+                        onSelectEvent={(event) => navigate(`/facturen/${event.id}`)}
                         views={["month", "agenda"]}
-                        defaultView="month"
+                        toolbar={true}
                         messages={{
                             today: 'Vandaag',
                             previous: 'Vorige',
@@ -49,9 +48,12 @@ const CalenderBody = () => {
                             date: 'Datum',
                             time: 'Tijd',
                             event: 'Gebeurtenis',
-                            noEventsInRange: 'Geen gebeurtenissen in deze periode.',
+                            noEventsInRange: 'Geen gebeurtenissen in deze periode.'
                         }}
-                        toolbar={true}
+                        startAccessor="start"
+                        endAccessor="end"
+                        defaultView="month"
+                        defaultDate={new Date()}
                     />
                 </div>
             </div>
