@@ -5,7 +5,7 @@ import { Search } from "@mui/icons-material";
 
 const Table = ({
     search = null,
-    createButton = null,
+    createButton = () => null,
     tableHeaders = [],
     tableData = [],
     handleSort = () => {},
@@ -29,14 +29,12 @@ const Table = ({
                             <Search/>
                         </button>
                     </div>
-                    {typeof createButton === "function" && (
-                        {createButton}
-                    )}
+                    {typeof createButton === "function" && createButton()}
                 </div>
             ) : (
                 typeof createButton === "function" && (
                     <div className="d-flex justify-content-end m-3">
-                        {createButton}
+                        {createButton()}
                     </div>
                 )
             )}

@@ -77,7 +77,9 @@ const InvoiceOverviewBody = () => {
                     <div className="card-body shadow-lg">
                         <Table
                             search={setSearchSorting}
-                            createButton={<a href="/facturen/aanmaken" className="btn btn-primary">Maak factuur</a>}
+                            createButton={() => (
+                                <a href="/facturen/aanmaken" className="btn btn-primary">Maak factuur</a>
+                            )}
                             tableHeaders = {tableHeaders}
                             tableData = {chunkedInvoiceData[arrayIndex] || []}
                             handleSort = {handleSort}

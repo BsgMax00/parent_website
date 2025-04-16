@@ -115,6 +115,9 @@ const InvoiceDetailBody = ({ invoice }) => {
                         <div className="col-12 px-2">
                             <div className="card rounded m-2">
                                 <div className="card-body shadow-lg">
+                                    <div className="d-flex justify-content-center">
+                                        <h2>Facturen</h2>
+                                    </div>
                                     <Table
                                     tableHeaders={tableHeaders}
                                     tableData={relatedInvoices[arrayIndex] || []}
