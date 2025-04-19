@@ -10,10 +10,10 @@ const InvoiceCreate = () => {
     const { InvoiceId } = useParams();
 
     useEffect(() => {
-        const invoice = invoiceData.find(invoice => invoice.InvoiceId === Number(InvoiceId))
+        const invoice = invoiceData.find(invoice => invoice.invoiceId === Number(InvoiceId))
         if (invoice){
+            setToEditInvoice(invoice);
             setIsEditing(true);
-            setToEditInvoice(invoice)
         }
         else{
             setIsEditing(false);

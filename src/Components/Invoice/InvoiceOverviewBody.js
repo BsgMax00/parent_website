@@ -31,30 +31,30 @@ const InvoiceOverviewBody = () => {
         const InvoiceDataChunked = [];
         let data = [...invoiceData].sort((a, b) => {
             if (sortingOption.key === "name") {
-                if (sortingOption.direction === "asc"){ return a.InvoiceName.localeCompare(b.InvoiceName, undefined, { numeric: true, sensitivity: "base" }); }
-                else{ return b.InvoiceName.localeCompare(a.InvoiceName, undefined, { numeric: true, sensitivity: "base" }); }
+                if (sortingOption.direction === "asc"){ return a.invoiceName.localeCompare(b.invoiceName, undefined, { numeric: true, sensitivity: "base" }); }
+                else{ return b.invoiceName.localeCompare(a.invoiceName, undefined, { numeric: true, sensitivity: "base" }); }
             }
             if (sortingOption.key === "price"){
-                if (sortingOption.direction === "asc"){ return a.InvoicePrice - b.InvoicePrice; }
-                else{ return b.InvoicePrice - a.InvoicePrice; }
+                if (sortingOption.direction === "asc"){ return a.invoicePrice - b.invoicePrice; }
+                else{ return b.invoicePrice - a.invoicePrice; }
             }
             if (sortingOption.key === "date"){
-                if (sortingOption.direction === "asc"){ return new Date(a.InvoiceDate).getTime() - new Date(b.InvoiceDate).getTime(); }
-                else { return new Date(b.InvoiceDate).getTime() - new Date(a.InvoiceDate).getTime(); }
+                if (sortingOption.direction === "asc"){ return new Date(a.invoiceDate).getTime() - new Date(b.invoiceDate).getTime(); }
+                else { return new Date(b.invoiceDate).getTime() - new Date(a.invoiceDate).getTime(); }
             }
             if (sortingOption.key === "repeat"){
-                if (sortingOption.direction === "asc"){ return a.InvoiceRepeat.localeCompare(b.InvoiceRepeat, undefined, { numeric: true, sensitivity: "base" }); }
-                else { return b.InvoiceRepeat.localeCompare(a.InvoiceRepeat, undefined, { numeric: true, sensitivity: "base" }); }
+                if (sortingOption.direction === "asc"){ return a.invoiceRepeat.localeCompare(b.invoiceRepeat, undefined, { numeric: true, sensitivity: "base" }); }
+                else { return b.invoiceRepeat.localeCompare(a.invoiceRepeat, undefined, { numeric: true, sensitivity: "base" }); }
             }
             if (sortingOption.key === "status"){
-                if (sortingOption.direction === "asc"){ return a.InvoiceStatus.localeCompare(b.InvoiceStatus, undefined, { numeric: true, sensitivity: "base" }); }
-                else { return b.InvoiceStatus.localeCompare(a.InvoiceStatus, undefined, { numeric: true, sensitivity: "base" }); }
+                if (sortingOption.direction === "asc"){ return a.invoiceStatus.localeCompare(b.invoiceStatus, undefined, { numeric: true, sensitivity: "base" }); }
+                else { return b.invoiceStatus.localeCompare(a.invoiceStatus, undefined, { numeric: true, sensitivity: "base" }); }
             }
             return 0;
         });
 
         if (searchSorting !== null){
-            data = [...data].filter((e) => e.InvoiceName.toLowerCase().includes(searchSorting.toLowerCase()))
+            data = [...data].filter((e) => e.invoiceName.toLowerCase().includes(searchSorting.toLowerCase()))
         }
     
         for (let i = 0; i < data.length; i += 10) {

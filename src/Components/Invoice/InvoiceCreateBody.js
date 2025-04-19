@@ -17,23 +17,23 @@ const InvoiceCreateBody = ({ invoice = null }) => {
     const navigate = useNavigate();
     
     const CreateInvoice = () => {
-        const data = new Invoice(String(getLastInvoiceIndex() + 1), Number(getLastInvoiceIndex()) + 1, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, invoiceRepeat, invoiceStatus, null);
+        const data = new Invoice(Number(getLastInvoiceIndex()) + 1, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, invoiceRepeat, invoiceStatus, null);
         postInvoiceData(data);
     }
 
     const EditInvoice = () => {
-        const data = new Invoice(invoice.id, invoice.InvoiceId, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, invoiceRepeat, invoiceStatus, invoice.GroupId);
+        const data = new Invoice(invoice.invoiceId, invoiceName, invoiceDescription, Number(invoicePrice), invoiceDate, invoiceRepeat, invoiceStatus, invoice.groupId);
         putInvoiceData(data);
     }
 
     useEffect(() => {
-        if (isEditing){
-            setInvoiceName(invoice.InvoiceName);
-            setInvoiceDescription(invoice.InvoiceDescription);
-            setInvoicePrice(invoice.InvoicePrice);
-            setInvoiceDate(invoice.InvoiceDate);
-            setInvoiceRepeat(invoice.InvoiceRepeat);
-            setInvoiceStatus(invoice.InvoiceStatus)
+        if (isEditing && invoice){
+            setInvoiceName(invoice.invoiceName);
+            setInvoiceDescription(invoice.invoiceDescription);
+            setInvoicePrice(invoice.invoicePrice);
+            setInvoiceDate(invoice.invoiceDate);
+            setInvoiceRepeat(invoice.invoiceRepeat);
+            setInvoiceStatus(invoice.invoiceStatus)
         }
         // eslint-disable-next-line
     }, [invoice])

@@ -21,17 +21,17 @@ const InvoiceRow = ({ Invoice, showActionButton = true }) => {
 
     return (
         <>
-            <tr title={Invoice.InvoiceDescription} onClick={() => navigate(`/facturen/${Invoice.id}`)}>
-                <td><div style={ellipsisCell}>{Invoice.InvoiceName}</div></td>
-                <td><div style={ellipsisCell}>{Invoice.InvoiceDate}</div></td>
-                <td><div style={ellipsisCell}>€ {Invoice.InvoicePrice}</div></td>
-                <td><div style={ellipsisCell}>{Invoice.InvoiceRepeat}</div></td>
-                <td><div style={ellipsisCell}>{Invoice.InvoiceStatus}</div></td>
+            <tr title={Invoice.invoiceDescription} onClick={() => navigate(`/facturen/${Invoice.invoiceId}`)}>
+                <td><div style={ellipsisCell}>{Invoice.invoiceName}</div></td>
+                <td><div style={ellipsisCell}>{Invoice.invoiceDate}</div></td>
+                <td><div style={ellipsisCell}>€ {Invoice.invoicePrice.toFixed(2)}</div></td>
+                <td><div style={ellipsisCell}>{Invoice.invoiceRepeat}</div></td>
+                <td><div style={ellipsisCell}>{Invoice.invoiceStatus}</div></td>
                 {showActionButton && (
                     <td className="text-center" onClick={(e) => e.stopPropagation()}>
                         <DropdownList Label={<MoreHoriz/>} styling={"btn border"}>
-                            <DropdownItem event={() => navigate(`/facturen/aanmaken/${Invoice.id}`)} value={"Bewerken"}/>
-                            <DropdownItem event={() => deleteInvoiceData(Invoice.id)} value={"Verwijderen"}/>
+                            <DropdownItem event={() => navigate(`/facturen/aanmaken/${Invoice.invoiceId}`)} value={"Bewerken"}/>
+                            <DropdownItem event={() => deleteInvoiceData(Invoice.invoiceId)} value={"Verwijderen"}/>
                         </DropdownList>
                     </td>
                 )}

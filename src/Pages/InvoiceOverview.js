@@ -9,12 +9,12 @@ const InvoiceOverview = () => {
     const { invoiceData } = useContext(InvoiceContext);
 
     const invoiceUnpaidAmount = () => {
-        const data = [...invoiceData].filter((e) => e.InvoiceStatus === "Niet betaald");
+        const data = [...invoiceData].filter((e) => e.invoiceStatus === "Niet betaald");
         return data.length;
     }
 
     const invoicePaidAmount = () => {
-        const data = [...invoiceData].filter((e) => e.InvoiceStatus !== "Niet betaald");
+        const data = [...invoiceData].filter((e) => e.invoiceStatus !== "Niet betaald");
         return data.length;
     }
 

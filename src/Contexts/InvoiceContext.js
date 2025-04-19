@@ -13,7 +13,7 @@ export const InvoiceProvider = ({ children }) => {
             return -1;
         };
         
-        return invoiceData[length - 1].InvoiceId;
+        return invoiceData[length - 1].invoiceId;
     }
 
     const getInvoiceData = async () => {

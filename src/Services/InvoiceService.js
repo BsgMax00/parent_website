@@ -2,30 +2,30 @@ import { serviceFetch } from "./BaseService";
 
 import Invoice from "../Classes/Invoice";
 
-const baseUrl = "http://localhost:4000"
+const baseUrl = "http://localhost:5293/Invoice"
 
 export const serviceGetInvoiceData = async () => {
-    const data = await serviceFetch("GET", `${baseUrl}/Invoice`);
+    const data = await serviceFetch("GET", `${baseUrl}`);
 
     const convertedInvoiceData = data.map(data =>
-        new Invoice(data.id, data.InvoiceId, data.InvoiceName, data.InvoiceDescription, data.InvoicePrice, FormatDate(data.InvoiceDate), data.InvoiceRepeat, data.InvoiceStatus, data.GroupId)
+        new Invoice(data.invoiceId, data.invoiceName, data.invoiceDescription, data.invoicePrice, FormatDate(data.invoiceDate), data.invoiceRepeat, data.invoiceStatus, data.groupId)
     )
 
     return convertedInvoiceData;
 }
 
 export const serviceDeleteInvoiceData = async ( invoiceID ) => {
-    await serviceFetch("DELETE", `${baseUrl}/Invoice/${invoiceID}`);
+    await serviceFetch("DELETE", `${baseUrl}/${invoiceID}`);
 }
 
 export const servicePostInvoiceData = async ( invoice ) => {
     const body = JSON.stringify(invoice);
-    await serviceFetch("POST", `${baseUrl}/Invoice`, body);
+    await serviceFetch("POST", `${baseUrl}`, body);
 }
 
 export const servicePutInvoiceData = async (invoice) => {
     const body = JSON.stringify(invoice);
-    await serviceFetch("PUT", `${baseUrl}/Invoice/${invoice.id}`, body)
+    await serviceFetch("PUT", `${baseUrl}/${invoice.invoiceId}`, body)
 }
 
 const FormatDate = ( invoiceDate ) => {

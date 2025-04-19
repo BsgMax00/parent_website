@@ -29,7 +29,7 @@ const InvoiceDetailBody = ({ invoice }) => {
 
     const chunkRelatedInvoiceData = () => {
         const NextInvoiceChunked = [];
-        let data = [...invoiceData].filter((e) => e.GroupId !== null && e.GroupId === invoice.GroupId && e.id !== invoice.id)
+        let data = [...invoiceData].filter((e) => e.groupId !== null && e.groupId === invoice.groupId && e.invoiceId !== invoice.invoiceId)
         data = [...data].sort((a, b) => {
             if (sortingOption.key === "name") {
                 if (sortingOption.direction === "asc"){ return a.InvoiceName.localeCompare(b.InvoiceName, undefined, { numeric: true, sensitivity: "base" }); }
@@ -78,33 +78,33 @@ const InvoiceDetailBody = ({ invoice }) => {
                             <div className="card-body shadow-lg">
                                 <div className="d-flex mb-3">
                                     <label htmlFor="Name" className="me-2 mb-0 fw-semibold">Naam: </label>
-                                    <p  id="Name" name="Name" className="mb-0">{invoice.InvoiceName}</p>
+                                    <p  id="Name" name="Name" className="mb-0">{invoice.invoiceName}</p>
                                 </div>
                                 <div className="d-flex mb-3">
                                     <label htmlFor="Description" className="me-2 mb-0 fw-semibold">Descriptie: </label>
-                                    <p  id="Description" name="Description" className="mb-0">{invoice.InvoiceDescription}</p>
+                                    <p  id="Description" name="Description" className="mb-0">{invoice.invoiceDescription}</p>
                                 </div>
                                 <div className="d-flex mb-3">
                                     <label htmlFor="Price" className="me-2 mb-0 fw-semibold">Prijs: </label>
-                                    <p  id="Price" name="Price" className="mb-0">{invoice.InvoicePrice}</p>
+                                    <p  id="Price" name="Price" className="mb-0">{invoice.invoicePrice.toFixed(2)}</p>
                                 </div>
                                 <div className="d-flex mb-3">
                                     <label htmlFor="Date" className="me-2 mb-0 fw-semibold">Datum: </label>
-                                    <p  id="Date" name="Date" className="mb-0">{invoice.InvoiceDate}</p>
+                                    <p  id="Date" name="Date" className="mb-0">{invoice.invoiceDate}</p>
                                 </div>
-                                {invoice.InvoiceEndDate && (
+                                {invoice.invoiceEndDate && (
                                     <div className="d-flex mb-3">
                                         <label htmlFor="EndDate" className="me-2 mb-0 fw-semibold">EindDatum: </label>
-                                        <p  id="EndDate" name="EndDate" className="mb-0">{invoice.InvoiceEndDate}</p>
+                                        <p  id="EndDate" name="EndDate" className="mb-0">{invoice.invoiceEndDate}</p>
                                     </div>
                                 )}
                                 <div className="d-flex mb-3">
                                     <label htmlFor="Repeat" className="me-2 mb-0 fw-semibold">Repeat: </label>
-                                    <p  id="Repeat" name="Repeat" className="mb-0">{invoice.InvoiceRepeat}</p>
+                                    <p  id="Repeat" name="Repeat" className="mb-0">{invoice.invoiceRepeat}</p>
                                 </div>
                                 <div className="d-flex mb-3">
                                     <label htmlFor="Status" className="me-2 mb-0 fw-semibold">Status: </label>
-                                    <p  id="Status" name="Status" className="mb-0">{invoice.InvoiceStatus}</p>
+                                    <p  id="Status" name="Status" className="mb-0">{invoice.invoiceStatus}</p>
                                 </div>
                             </div>
                         </div>

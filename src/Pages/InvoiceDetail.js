@@ -10,7 +10,7 @@ const InvoiceDetail = () => {
     const {InvoiceId} = useParams()
 
     useEffect(() => {
-        const invoice = invoiceData.find(invoice => invoice.InvoiceId === Number(InvoiceId));
+        const invoice = invoiceData.find(invoice => invoice.invoiceId === Number(InvoiceId));
         setInvoice(invoice);
         // eslint-disable-next-line
     }, [InvoiceId, invoiceData])

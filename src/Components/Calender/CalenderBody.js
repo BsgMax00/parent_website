@@ -17,8 +17,7 @@ const CalenderBody = () => {
 
     const convertToCalendarData = () => {
         const data = [...invoiceData];
-        const convertedCalendarData = data.map(data => new CalendarInvoice(data.id, data.InvoiceName, new Date(data.InvoiceDate), true))
-
+        const convertedCalendarData = data.map(data => new CalendarInvoice(data.invoiceId, data.invoiceName, new Date(data.invoiceDate), true))
         return convertedCalendarData;
     }
 
