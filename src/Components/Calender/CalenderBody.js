@@ -11,13 +11,13 @@ moment.locale("nl-be")
 const localizer = momentLocalizer(moment)
 
 const CalenderBody = () => {
-    const { invoiceData } = useContext(InvoiceContext)
+    const { invoiceData, convertDate } = useContext(InvoiceContext)
     const [ calendarData, setCalendarData ] = useState([]);
     const navigate = useNavigate();
 
     const convertToCalendarData = () => {
         const data = [...invoiceData];
-        const convertedCalendarData = data.map(data => new CalendarInvoice(data.invoiceId, data.invoiceName, new Date(data.invoiceDate), true))
+        const convertedCalendarData = data.map(data => new CalendarInvoice(data.invoiceId, data.invoiceName, convertDate(data.invoiceDate), true))
         return convertedCalendarData;
     }
 

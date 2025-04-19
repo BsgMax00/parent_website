@@ -35,5 +35,5 @@ const FormatDate = ( invoiceDate ) => {
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
 
-    return `${year}-${month}-${day}`;
+    return `${day}-${month}-${year}`;
 }

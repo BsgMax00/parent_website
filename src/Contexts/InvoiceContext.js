@@ -36,13 +36,21 @@ export const InvoiceProvider = ({ children }) => {
         await getInvoiceData();
     }
 
+    const convertDate = ( invoiceDate ) => {
+        const day = invoiceDate.substring(0,2);
+        const month = invoiceDate.substring(3,5);
+        const year = invoiceDate.substring(6,12);
+
+        return new Date(Number(year), Number(month) - 1, Number(day));
+    }
+
     useEffect(() => {
         getInvoiceData();
         // eslint-disable-next-line
     }, [])
 
     return (
-        <InvoiceContext.Provider value={{ invoiceData, setInvoiceData, isEditing, setIsEditing, postInvoiceData, deleteInvoiceData, putInvoiceData, getLastInvoiceIndex }}>
+        <InvoiceContext.Provider value={{ invoiceData, setInvoiceData, isEditing, setIsEditing, getLastInvoiceIndex, postInvoiceData, deleteInvoiceData, putInvoiceData, convertDate }}>
             {children}
         </InvoiceContext.Provider>
     )
