@@ -39,8 +39,6 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-### `npx json-server -p 4000 db.json`
+### `api is another project`
 
-**Note: the -p 4000 is purely because npm start uses port 3000!**
-
-this is the command to run the json-server on port 4000. once you are in src/data you can run this command and the server should start up.
+**Note: the data fetching does not work without the api**
