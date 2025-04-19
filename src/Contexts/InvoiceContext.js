@@ -36,10 +36,10 @@ export const InvoiceProvider = ({ children }) => {
         await getInvoiceData();
     }
 
-    const convertDate = ( invoiceDate ) => {
-        const day = invoiceDate.substring(0,2);
-        const month = invoiceDate.substring(3,5);
-        const year = invoiceDate.substring(6,12);
+    const convertCalendarDate = ( invoiceDate ) => {
+        const day = String(invoiceDate).substring(0,2);
+        const month = String(invoiceDate).substring(3,5);
+        const year = String(invoiceDate).substring(6,12);
 
         return new Date(Number(year), Number(month) - 1, Number(day));
     }
@@ -50,7 +50,7 @@ export const InvoiceProvider = ({ children }) => {
     }, [])
 
     return (
-        <InvoiceContext.Provider value={{ invoiceData, setInvoiceData, isEditing, setIsEditing, getLastInvoiceIndex, postInvoiceData, deleteInvoiceData, putInvoiceData, convertDate }}>
+        <InvoiceContext.Provider value={{ invoiceData, setInvoiceData, isEditing, setIsEditing, getLastInvoiceIndex, postInvoiceData, deleteInvoiceData, putInvoiceData, convertCalendarDate }}>
             {children}
         </InvoiceContext.Provider>
     )

@@ -7,7 +7,7 @@ import DropdownItem from "../dropdown/DropdownItem";
 import { useNavigate } from "react-router-dom";
 
 const InvoiceCreateBody = ({ invoice = null }) => {
-    const { isEditing, postInvoiceData, putInvoiceData, getLastInvoiceIndex } = useContext(InvoiceContext);
+    const { isEditing, postInvoiceData, putInvoiceData, getLastInvoiceIndex, convertCalendarDate } = useContext(InvoiceContext);
     const [ invoiceName, setInvoiceName ] = useState("");
     const [ invoiceDescription, setInvoiceDescription ] = useState(null) 
     const [ invoicePrice, setInvoicePrice ] = useState("");
@@ -31,7 +31,7 @@ const InvoiceCreateBody = ({ invoice = null }) => {
             setInvoiceName(invoice.invoiceName);
             setInvoiceDescription(invoice.invoiceDescription);
             setInvoicePrice(invoice.invoicePrice);
-            setInvoiceDate(invoice.invoiceDate);
+            setInvoiceDate(convertCalendarDate(invoice.invoiceDate).toISOString().split("T")[0]);
             setInvoiceRepeat(invoice.invoiceRepeat);
             setInvoiceStatus(invoice.invoiceStatus)
         }
