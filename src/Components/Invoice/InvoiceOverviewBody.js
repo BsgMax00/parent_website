@@ -9,7 +9,7 @@ const InvoiceOverviewBody = () => {
     const [ searchSorting, setSearchSorting ] = useState(null);
     const [ sortingOption, setSortingOption ] = useState({key: null, direction: "asc"});
     const [ arrayIndex, setArrayIndex ] = useState(0)
-    const { invoiceData } = useContext(InvoiceContext);
+    const { invoiceData, convertCalendarDate } = useContext(InvoiceContext);
     const tableHeaders = [
         { label: "Naam", key: "name" },
         { label: "Datum", key: "date" },
@@ -39,8 +39,8 @@ const InvoiceOverviewBody = () => {
                 else{ return b.invoicePrice - a.invoicePrice; }
             }
             if (sortingOption.key === "date"){
-                if (sortingOption.direction === "asc"){ return new Date(a.invoiceDate).getTime() - new Date(b.invoiceDate).getTime(); }
-                else { return new Date(b.invoiceDate).getTime() - new Date(a.invoiceDate).getTime(); }
+                if (sortingOption.direction === "asc"){ return convertCalendarDate(a.invoiceDate).getTime() - convertCalendarDate(b.invoiceDate).getTime(); }
+                else { return convertCalendarDate(b.invoiceDate).getTime() - convertCalendarDate(a.invoiceDate).getTime(); }
             }
             if (sortingOption.key === "repeat"){
                 if (sortingOption.direction === "asc"){ return a.invoiceRepeat.localeCompare(b.invoiceRepeat, undefined, { numeric: true, sensitivity: "base" }); }

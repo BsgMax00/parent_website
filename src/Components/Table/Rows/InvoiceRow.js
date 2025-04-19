@@ -1,32 +1,31 @@
 import { useContext } from "react";
 import { InvoiceContext } from "../../../Contexts/InvoiceContext";
-
-import { MoreHoriz } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { MoreHoriz, CheckCircle, Error } from "@mui/icons-material";
 
 import DropdownList from "../../dropdown/DropdownList";
 import DropdownItem from "../../dropdown/DropdownItem";
-import { useNavigate } from "react-router-dom";
+
+const ellipsisCell = {
+    display: "block",
+    alignItems: "center",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis"
+}
 
 const InvoiceRow = ({ Invoice, showActionButton = true }) => {
     const { deleteInvoiceData } = useContext(InvoiceContext);
     const navigate = useNavigate();
 
-    const ellipsisCell = {
-        display: "block",
-        alignItems: "center",
-        whiteSpace: "nowrap",
-        overflow: "hidden",
-        textOverflow: "ellipsis"
-    }
-
     return (
         <>
             <tr title={Invoice.invoiceDescription} onClick={() => navigate(`/facturen/${Invoice.invoiceId}`)}>
-                <td><div style={ellipsisCell}>{Invoice.invoiceName}</div></td>
+                <td><div className="fw-bold" style={ellipsisCell}>{Invoice.invoiceName}</div></td>
                 <td><div style={ellipsisCell}>{Invoice.invoiceDate}</div></td>
                 <td><div style={ellipsisCell}>€ {Invoice.invoicePrice.toFixed(2)}</div></td>
                 <td><div style={ellipsisCell}>{Invoice.invoiceRepeat}</div></td>
-                <td><div style={ellipsisCell}>{Invoice.invoiceStatus}</div></td>
+                {renderStatus(Invoice.invoiceStatus)}
                 {showActionButton && (
                     <td className="text-center" onClick={(e) => e.stopPropagation()}>
                         <DropdownList Label={<MoreHoriz/>} styling={"btn border"}>
@@ -39,5 +38,22 @@ const InvoiceRow = ({ Invoice, showActionButton = true }) => {
         </>
     );
 };
+
+const renderStatus = ( status ) => {
+    switch(status){
+        case "Betaald":
+            return (
+                <td><div className="d-flex align-items-center" style={ellipsisCell}><CheckCircle color="success"/>{status}</div></td>
+            );
+        case "Niet betaald":
+            return (
+                <td><div className="d-flex align-items-center" style={ellipsisCell}><Error color="error"/>{status}</div></td>
+            );
+        default:
+            return (
+                <td><div className="d-flex align-items-center" style={ellipsisCell}><Error color="warning"/>{status}</div></td>
+            );
+    }
+}
 
 export default InvoiceRow;

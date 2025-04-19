@@ -46,7 +46,7 @@ const CalenderBody = () => {
                             agenda: 'Agenda',
                             date: 'Datum',
                             time: 'Tijd',
-                            event: 'Gebeurtenis',
+                            event: 'factuur',
                             noEventsInRange: 'Geen gebeurtenissen in deze periode.'
                         }}
                         startAccessor="start"

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Pagination from "./Pagination";
 
-import { Search } from "@mui/icons-material";
+import { Search, KeyboardArrowDown, KeyboardArrowUp, UnfoldMore } from "@mui/icons-material";
 
 const Table = ({
     search = null,
@@ -41,14 +41,14 @@ const Table = ({
             <div className="card rounded m-3">
                 <div className="card-body p-0">
                     <div className="table-responsive table-card">
-                        <table className="table table-striped table-hover align-middle table-nowrap mb-0" style={{ tableLayout: "fixed", width: "100%"}}>
+                        <table className="table table-hover align-middle table-nowrap mb-0" style={{ tableLayout: "fixed", width: "100%"}}>
                             <thead>
-                                <tr className="fw-bold">
+                                <tr>
                                     {tableHeaders.map(({ label, key }, index) => (
-                                        <th key={index} scope="col" onClick={() => handleSort(key)}>{label} {sortingOption.key === key && (sortingOption.direction === "asc" ? '▲' : '▼')}</th>
+                                        <th key={index} scope="col" onClick={() => handleSort(key)}><h5 className="fw-bold m-0">{label} {sortingOption.key === key ? (sortingOption.direction === "asc" ? <KeyboardArrowUp/> : <KeyboardArrowDown/>) : <UnfoldMore/>}</h5></th>
                                     ))}
                                     {includeActionColumn && (
-                                        <th scope="col" className="text-center" style={{ width: "10%" }}>Actie</th>
+                                        <th scope="col" className="text-center" style={{ width: "10%" }}><h5 className="fw-bold m-0">Actie</h5></th>
                                     )}
                                 </tr>
                             </thead>

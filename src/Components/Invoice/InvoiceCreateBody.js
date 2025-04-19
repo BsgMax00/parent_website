@@ -62,19 +62,19 @@ const InvoiceCreateBody = ({ invoice = null }) => {
                         <label htmlFor="Repeat">Repeat:</label>
                         <DropdownList Label={`Repeat: ${invoiceRepeat}`} styling={"btn btn-secondary dropdown-toggle"}>
                             <DropdownItem event={() => setInvoiceRepeat("Niet")} value={"Niet"}/>
-                            <DropdownItem event={() => setInvoiceRepeat("wekelijks")} value={"wekelijks"}/>
-                            <DropdownItem event={() => setInvoiceRepeat("maandelijks")} value={"maandelijks"}/>
+                            <DropdownItem event={() => setInvoiceRepeat("Wekelijks")} value={"Wekelijks"}/>
+                            <DropdownItem event={() => setInvoiceRepeat("Maandelijks")} value={"Maandelijks"}/>
                             <DropdownItem event={() => setInvoiceRepeat("3 maandelijks")} value={"3 maandelijks"}/>
                             <DropdownItem event={() => setInvoiceRepeat("6 maandelijks")} value={"6 maandelijks"}/>
-                            <DropdownItem event={() => setInvoiceRepeat("jaarlijks")} value={"jaarlijks"}/>
+                            <DropdownItem event={() => setInvoiceRepeat("Jaarlijks")} value={"Jaarlijks"}/>
                         </DropdownList>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="Status">Status:</label>
                         <DropdownList Label={`Status: ${invoiceStatus}`} styling={"btn btn-secondary dropdown-toggle"}>
                             <DropdownItem event={() => setInvoiceStatus("Niet betaald")} value={"Niet betaald"}/>
-                            <DropdownItem event={() => setInvoiceStatus("betaald")} value={"betaald"}/>
-                            <DropdownItem event={() => setInvoiceStatus("geanulleerd")} value={"geanulleerd"}/>
+                            <DropdownItem event={() => setInvoiceStatus("Betaald")} value={"Betaald"}/>
+                            <DropdownItem event={() => setInvoiceStatus("Geanulleerd")} value={"Geanulleerd"}/>
                             <DropdownItem event={() => setInvoiceStatus("Geld terug")} value={"Geld terug"}/>
                             <DropdownItem event={() => setInvoiceStatus("Toekomstige betaling")} value={"Toekomstige betaling"}/>
                         </DropdownList>

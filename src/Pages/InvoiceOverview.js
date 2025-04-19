@@ -22,9 +22,9 @@ const InvoiceOverview = () => {
         <>
             <div className="container-fluid">
                 <div className="row">
-                    <InvoiceInfoCard CardIcon={Assignment} cardData={invoiceData.length} cardText="Alle facturen"/>
-                    <InvoiceInfoCard CardIcon={CheckCircle} cardData={invoiceUnpaidAmount()} cardText="Niet betaalde facturen"/>
-                    <InvoiceInfoCard CardIcon={Error} cardData={invoicePaidAmount()} cardText="betaalde facturen"/>
+                    <InvoiceInfoCard CardIcon={Assignment} color="#0a58ca" cardData={invoiceData.length} cardText="Alle facturen"/>
+                    <InvoiceInfoCard CardIcon={CheckCircle} color="success" cardData={invoicePaidAmount()} cardText="Betaalde facturen"/>
+                    <InvoiceInfoCard CardIcon={Error} color="error" cardData={invoiceUnpaidAmount()} cardText="Niet betaalde facturen"/>
                 </div>
                 <div className="row">
                     <InvoiceOverviewBody/>

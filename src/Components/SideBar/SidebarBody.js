@@ -7,7 +7,7 @@ const SidebarBody = () => {
                 <h3 className="text-center text-black">Test</h3>
                 <hr/>
                 <ul className="nav flex-column">
-                    <SidebarItem item="" text="dashboard"/>
+                    <SidebarItem item="" text="Dashboard"/>
                     <SidebarItem item="kalender" text="Kalender"/>
                     <SidebarItem item="facturen" text="Facturen"/>
                 </ul>
