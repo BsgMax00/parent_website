@@ -80,9 +80,9 @@ const InvoiceCreateBody = ({ invoice = null }) => {
                         </DropdownList>
                     </div>
                     {isEditing === true ? (
-                        <button type="button" className="btn btn-primary" onClick={() => {EditInvoice(); navigate("/facturen")}}>Edit Invoice</button>
+                        <button type="button" className="btn btn-primary" onClick={() => {EditInvoice(); navigate("/facturen");}}>Edit Invoice</button>
                     ) : (
-                        <button type="button" className="btn btn-primary" onClick={() => {CreateInvoice(); navigate("/facturen")}}>Maak Invoice</button>
+                        <button type="button" className="btn btn-primary" onClick={() => {CreateInvoice(); navigate("/facturen");}}>Maak Invoice</button>
                     )}
                 </div>
             </div>

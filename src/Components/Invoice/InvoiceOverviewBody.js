@@ -7,7 +7,7 @@ import Table from "../Table/Table";
 const InvoiceOverviewBody = () => {
     const [ chunkedInvoiceData, setChunkedInvoiceData ] = useState([]);
     const [ searchSorting, setSearchSorting ] = useState(null);
-    const [ sortingOption, setSortingOption ] = useState({key: null, direction: "asc"});
+    const [ sortingOption, setSortingOption ] = useState({key: "date", direction: "desc"});
     const [ arrayIndex, setArrayIndex ] = useState(0)
     const { invoiceData, convertCalendarDate } = useContext(InvoiceContext);
     const tableHeaders = [

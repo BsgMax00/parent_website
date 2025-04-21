@@ -1,9 +1,11 @@
 import { serviceGetInvoiceData, servicePostInvoiceData, serviceDeleteInvoiceData, servicePutInvoiceData } from "../Services/InvoiceService";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { UserContext } from "./UserContext"
 
 export const InvoiceContext = createContext();
 
 export const InvoiceProvider = ({ children }) => {
+    const { user } = useContext( UserContext );
     const [ invoiceData, setInvoiceData ] = useState([]);
     const [ isEditing, setIsEditing ] = useState(false);
 
@@ -17,7 +19,7 @@ export const InvoiceProvider = ({ children }) => {
     }
 
     const getInvoiceData = async () => {
-        const InvoiceData = await serviceGetInvoiceData();
+        const InvoiceData = await serviceGetInvoiceData( user.userId );
         setInvoiceData(InvoiceData);
     }
 
@@ -45,9 +47,11 @@ export const InvoiceProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        getInvoiceData();
+        if (user){
+            getInvoiceData();
+        }
         // eslint-disable-next-line
-    }, [])
+    }, [user])
 
     return (
         <InvoiceContext.Provider value={{ invoiceData, setInvoiceData, isEditing, setIsEditing, getLastInvoiceIndex, postInvoiceData, deleteInvoiceData, putInvoiceData, convertCalendarDate }}>

@@ -6,14 +6,14 @@ import reportWebVitals from './reportWebVitals';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { InvoiceProvider } from './Contexts/InvoiceContext';
+import { UserProvider } from './Contexts/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <InvoiceProvider>
+    <UserProvider>
       <App/>
-    </InvoiceProvider>
+    </UserProvider>
   </React.StrictMode>
 );
 
