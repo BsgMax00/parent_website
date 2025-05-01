@@ -1,4 +1,5 @@
 import { serviceFetch } from "./BaseService";
+import { FormatDate } from "../helpers/DateHelpers";
 import Invoice from "../Classes/Invoice";
 
 const baseUrl = "http://localhost:5293/Invoice"
@@ -25,14 +26,4 @@ export const servicePostInvoiceData = async ( invoice ) => {
 export const servicePutInvoiceData = async (invoice) => {
     const body = JSON.stringify(invoice);
     await serviceFetch("PUT", `${baseUrl}/${invoice.invoiceId}`, body)
-}
-
-const FormatDate = ( invoiceDate ) => {
-    const date = new Date(invoiceDate);
-
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-
-    return `${day}-${month}-${year}`;
 }

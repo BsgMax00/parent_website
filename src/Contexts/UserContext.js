@@ -13,7 +13,7 @@ export const UserProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        setUser(JSON.parse(window.sessionStorage.getItem("user")))
+        setUser(JSON.parse(window.sessionStorage.getItem("user")));
     }, [])
     
     return (

@@ -11,7 +11,7 @@ import InvoiceCreate from './Pages/InvoiceCreate';
 import Error from './Pages/Error';
 
 const UnauthenticatedRoute = ({ children }) => {
-  if (sessionStorage.getItem("token")) {
+  if (sessionStorage.getItem("accessToken")) {
     return <Navigate to="/" replace/>
   };
 
@@ -19,7 +19,7 @@ const UnauthenticatedRoute = ({ children }) => {
 };
 
 const AuthenticatedRoute = ({ children }) => {
-  if (!sessionStorage.getItem("token")) {
+  if (!sessionStorage.getItem("accessToken")) {
     return <Navigate to="/login" replace/>
   };
 
